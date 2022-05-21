@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_qlpm">
+
+    <fragment
+        android:id="@+id/nav_qlpm"
+        android:name="com.example.duanmau_ph19020.fragments.QLPMFragment"
+        android:label="@string/menu_qlpm"
+        tools:layout="@layout/fragment_qlpm" />
+
+    <fragment
+        android:id="@+id/nav_qlls"
+        android:name="com.example.duanmau_ph19020.fragments.QLLSFragment"
+        android:label="@string/menu_qlls"
+        tools:layout="@layout/fragment_qlls" />
+
+    <fragment
+        android:id="@+id/nav_qls"
+        android:name="com.example.duanmau_ph19020.fragments.QLSFragment"
+        android:label="@string/menu_qls"
+        tools:layout="@layout/fragment_qls" />
+    <fragment
+        android:id="@+id/nav_qltv"
+        android:name="com.example.duanmau_ph19020.fragments.QLTVFragment"
+        android:label="@string/menu_qltv"
+        tools:layout="@layout/fragment_qltv" />
+    <fragment
+        android:id="@+id/nav_tktop"
+        android:name="com.example.duanmau_ph19020.fragments.TKTopFragment"
+        android:label="@string/menu_tktop"
+        tools:layout="@layout/fragment_tktop" />
+    <fragment
+        android:id="@+id/nav_dt"
+        android:name="com.example.duanmau_ph19020.fragments.DoanhThuFragment"
+        android:label="@string/menu_dt"
+        tools:layout="@layout/fragment_doanh_thu" />
+    <fragment
+        android:id="@+id/nav_dmk"
+        android:name="com.example.duanmau_ph19020.fragments.DMKFragment"
+        android:label="@string/menu_dmk"
+        tools:layout="@layout/fragment_dmk" />
+    <fragment
+        android:id="@+id/nav_exit"
+        android:name="com.example.duanmau_ph19020.fragments.ExitFragment"
+        android:label="@string/menu_exit"
+        tools:layout="@layout/fragment_exit" />
+
+</navigation>

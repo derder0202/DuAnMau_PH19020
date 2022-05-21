@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_qlpm"
+            android:icon="@drawable/ic_qlpm"
+            android:title="@string/menu_qlpm" />
+        <item
+            android:id="@+id/nav_qlls"
+            android:icon="@drawable/ic_loai_sach"
+            android:title="@string/menu_qlls" />
+        <item
+            android:id="@+id/nav_qls"
+            android:icon="@drawable/ic_sach"
+            android:title="@string/menu_qls" />
+        <item
+            android:id="@+id/nav_qltv"
+            android:icon="@drawable/ic_thanhvien"
+            android:title="@string/menu_qltv" />
+    </group>
+    <item android:title="@string/menu_title_tk">
+        <menu>
+            <item
+                android:id="@+id/nav_tktop"
+                android:icon="@drawable/ic_top"
+                android:title="@string/menu_tktop" />
+            <item
+                android:id="@+id/nav_dt"
+                android:icon="@drawable/ic_doanhthu"
+                android:title="@string/menu_dt" />
+        </menu>
+    </item>
+    <item android:title="@string/menu_title_nd">
+        <menu>
+            <item
+                android:id="@+id/nav_dmk"
+                android:icon="@drawable/ic_dmk"
+                android:title="@string/menu_dmk" />
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_dangxuat"
+                android:title="@string/menu_exit" />
+        </menu>
+    </item>
+</menu>

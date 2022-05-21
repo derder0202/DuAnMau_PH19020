@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/dialog_phieumuon.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/dialog_qlls.xml" value="0.27049180327868855" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/dialog_sach.xml" value="0.18385416666666668" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/dialog_thanhvien.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/fragment_qlls.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/fragment_qls.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/item_loaisach.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/item_phieumuon.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/item_sach.xml" value="0.33" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/item_thanhvien.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/drawable-v24/ic_edit.xml" value="0.3335" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/drawable-v24/ic_qlpm.xml" value="0.3335" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/activity_login2.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/activity_man_hinh_chao.xml" value="0.33" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/app_bar_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/content_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/dialog_thanhvien.xml" value="0.184375" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_d_m_k.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_dmk.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_doanh_thu.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_exit.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_gallery.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_q_l_t_v.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_qlls.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_qlpm.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_qls.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_qltv.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_t_k_top.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/fragment_tktop.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/item_thanhvien.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/layout/nav_header_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/menu/activity_main_drawer.xml" value="0.3625" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1935" />
+        <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH190202/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1935" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
