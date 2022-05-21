@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.QLSFragment" >
+    android:background="#A9A9A9"
+    tools:context=".fragments.QLSFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/qls_recylerView"

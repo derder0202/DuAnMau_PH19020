@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A9A9A9"
     tools:context=".fragments.QLTVFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/qltv_recylerView"
         android:layout_width="match_parent"
-        android:layout_margin="15dp"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/qltv_fab"
