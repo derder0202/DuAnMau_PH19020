@@ -69,7 +69,7 @@ class QLSFragment : Fragment() {
             maSach.editText!!.setText(sach.maSach.toString())
             tenSach.editText!!.setText(sach.tenSach)
             giaThue.editText!!.setText(sach.giaThue.toString())
-            spinner.setSelection(listLoaiSach.indexOfFirst { loaiSach -> loaiSach.tenLoai == sach.tenLoai })
+            spinner.setSelection(listLoaiSach.indexOfFirst { loaiSach -> loaiSach.maLoai == sach.maLoai })
         }
 
         binding.dialogQlsCancelBtn.setOnClickListener { dialog.dismiss() }
@@ -83,7 +83,7 @@ class QLSFragment : Fragment() {
                 if(checkField(tenSach)&& checkField(giaThue)&& checkNumber(giaThue)){
                     sach.tenSach = tenSach.editText!!.text.toString()
                     sach.giaThue = giaThue.editText!!.text.toString().toInt()
-                    sach.tenLoai = spinner.selectedItem.toString().split("\t\t")[1]
+                    sach.maLoai = spinner.selectedItem.toString().split("\t\t")[0].toInt()
                     if(type==0){
                         dao.insert(sach)
                     } else dao.update(sach)

@@ -21,7 +21,7 @@ class SachDAO(context: Context) {
         val values = ContentValues()
         values.put("tenSach",sach.tenSach)
         values.put("giaThue",sach.giaThue)
-        values.put("maLoai",sach.tenLoai)
+        values.put("maLoai",sach.maLoai)
         val result = if(db.insert("Sach",null,values)<0)"Them sach that bai" else "Them sach thanh cong"
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
     }
@@ -29,7 +29,7 @@ class SachDAO(context: Context) {
         val values = ContentValues()
         values.put("tenSach",sach.tenSach)
         values.put("giaThue",sach.giaThue)
-        values.put("maLoai",sach.tenLoai)
+        values.put("maLoai",sach.maLoai)
         val result = if(db.update("Sach",values,"maSach= '${sach.maSach}' ",null)<=0)"Cap nhat sach that bai" else "Cap nhat sach thanh cong"
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
     }
@@ -44,7 +44,7 @@ class SachDAO(context: Context) {
         var cursor = db.rawQuery(sql,null)
         cursor.moveToFirst()
         while (!cursor.isAfterLast){
-            list.add(Sach(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3)))
+            list.add(Sach(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3)))
             cursor.moveToNext()
         }
         cursor.close()

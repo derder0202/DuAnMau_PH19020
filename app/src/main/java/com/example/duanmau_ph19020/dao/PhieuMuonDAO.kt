@@ -44,7 +44,7 @@ class PhieuMuonDAO(context: Context) {
         values.put("Ngay",sdf.format(phieuMuon.ngay))
         values.put("traSach",phieuMuon.traSach)
         values.put("tienThue",phieuMuon.tienThue)
-        val result = if(db.update("PhieuMuon",values,"maPM= '${phieuMuon.maPM}' ",null)<=0) "Them phieu muon that bai" else "Them phieu muon thanh cong"
+        val result = if(db.update("PhieuMuon",values,"maPM= '${phieuMuon.maPM}' ",null)<=0) "Sua thong tin phieu muon that bai" else "Sua thong tin phieu muon thanh cong"
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
     }
 
@@ -69,7 +69,9 @@ class PhieuMuonDAO(context: Context) {
 
     fun getTop():ArrayList<TopTen>{
         val list = ArrayList<TopTen>()
-        val cursor = db.rawQuery("SELECT maSach, count(maSach) FROM PhieuMuon GROUP BY maSach ORDER BY soLuong DESC LIMIT 10",null)
+        val cursor = db.rawQuery("SELECT Sach.tenSach, count(PhieuMuon.maSach) FROM PhieuMuon \n" +
+                "JOIN Sach on Sach.maSach = PhieuMuon.MaSach\n" +
+                "GROUP BY Sach.tenSach ORDER BY count(PhieuMuon.maSach) DESC LIMIT 10  ",null)
         cursor.moveToFirst()
         while (!cursor.isAfterLast){
             list.add(TopTen(cursor.getString(0),cursor.getInt(1)))
@@ -85,6 +87,7 @@ class PhieuMuonDAO(context: Context) {
         cursor.moveToFirst()
         while (!cursor.isAfterLast){
             list.add(cursor.getInt(0))
+            cursor.moveToNext()
         }
         cursor.close()
         return list[0]

@@ -2,6 +2,7 @@ package com.example.duanmau_ph19020.dao
 import android.app.AlertDialog
 import android.content.Context
 import com.example.duanmau_ph19020.fragments.QLLSFragment
+import com.example.duanmau_ph19020.fragments.QLPMFragment
 import com.example.duanmau_ph19020.fragments.QLSFragment
 import com.example.duanmau_ph19020.fragments.QLTVFragment
 import com.example.duanmau_ph19020.model.*
@@ -31,6 +32,13 @@ class TempFunc {
             }
             return true
         }
+        fun <T> listOjectToString(list:ArrayList<T>):ArrayList<String>{
+            val listString = ArrayList<String>()
+            for(i in list){
+                listString.add(i.toString())
+            }
+            return listString
+        }
         fun removeDialog(objectAny: Any,context: Context,fragmentAny:Any){
             val builder = AlertDialog.Builder(context)
                 .setTitle(when(objectAny){
@@ -53,7 +61,10 @@ class TempFunc {
                             LoaiSachDAO(context).remove(objectAny)
                             (fragmentAny as QLLSFragment).updateRecylerView()
                         }
-                        is PhieuMuon -> PhieuMuonDAO(context).remove(objectAny)
+                        is PhieuMuon -> {
+                            PhieuMuonDAO(context).remove(objectAny)
+                            (fragmentAny as QLPMFragment).updateRecylerView()
+                        }
                         is Sach ->  {
                             SachDAO(context).remove(objectAny)
                             (fragmentAny as QLSFragment).updateRecylerView()

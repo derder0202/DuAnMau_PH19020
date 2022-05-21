@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.duanmau_ph19020.dao.LoaiSachDAO
 import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.databinding.ItemSachBinding
 import com.example.duanmau_ph19020.fragments.QLSFragment
@@ -30,7 +31,8 @@ class AdapterSach (private var context: Context,private var list:ArrayList<Sach>
         holder.maSach.text = "Mã sách: ${sach.maSach}"
         holder.tenSach.text = "Tên sách: ${sach.tenSach}"
         holder.giaThue.text = "Giá thuê: ${sach.giaThue}"
-        holder.loaiSach.text = "Loại sách: ${sach.tenLoai}"
+        val listLoaiSach = LoaiSachDAO(context).getAll()
+        holder.loaiSach.text = "Loại sách: ${listLoaiSach[listLoaiSach.indexOfFirst { loaiSach -> loaiSach.maLoai == sach.maLoai}].tenLoai}"
         holder.editBtn.setOnClickListener{
             fragment.openDialog(sach,1)
         }
