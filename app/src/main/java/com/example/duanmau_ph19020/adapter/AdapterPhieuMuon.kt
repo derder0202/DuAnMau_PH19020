@@ -1,9 +1,9 @@
 package com.example.duanmau_ph19020.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.dao.SachDAO
@@ -31,6 +31,7 @@ class AdapterPhieuMuon(private val context: Context,private val list:ArrayList<P
         return ViewHolder(binding)
     }
 
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val phieuMuon = list[position]
         val listThanhVien = ThanhVienDAO(context).getAll()

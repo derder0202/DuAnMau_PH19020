@@ -1,5 +1,6 @@
 package com.example.duanmau_ph19020.fragments
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.duanmau_ph19020.adapter.AdapterThanhVien
 import com.example.duanmau_ph19020.dao.*
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkField
-import com.example.duanmau_ph19020.dao.TempFunc.Companion.removeDialog
 import com.example.duanmau_ph19020.databinding.DialogThanhvienBinding
 import com.example.duanmau_ph19020.databinding.FragmentQltvBinding
 import com.example.duanmau_ph19020.model.*
@@ -65,7 +65,8 @@ class QLTVFragment : Fragment() {
 //        dialog.show()
 //    }
 
-    fun openDialog(thanhVien: ThanhVien,type:Int){
+    @SuppressLint("SimpleDateFormat")
+    fun openDialog(thanhVien: ThanhVien, type:Int){
         val builder = AlertDialog.Builder(requireActivity())
         val binding = DialogThanhvienBinding.inflate(layoutInflater)
         builder.setView(binding.root)
@@ -82,14 +83,14 @@ class QLTVFragment : Fragment() {
             maTV.editText!!.setText(thanhVien.maTV.toString())
         }
         val cal = Calendar.getInstance()
-        val dateSetListener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
+        val dateSetListener = DatePickerDialog.OnDateSetListener { _, i, i2, i3 ->
             cal.set(Calendar.YEAR,i)
             cal.set(Calendar.MONTH,i2)
             cal.set(Calendar.DAY_OF_MONTH,i3)
             val sdf = SimpleDateFormat("yyyy-MM-dd")
             ngaySinh.editText!!.setText(sdf.format(cal.time))
         }
-        ngaySinh.editText!!.setOnFocusChangeListener{ view, b ->
+        ngaySinh.editText!!.setOnFocusChangeListener{ _, b ->
             if(b){
                 DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
                 ngaySinh.editText!!.setOnClickListener{

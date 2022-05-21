@@ -1,5 +1,6 @@
 package com.example.duanmau_ph19020.fragments
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,13 +15,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.adapter.AdapterPhieuMuon
 import com.example.duanmau_ph19020.dao.PhieuMuonDAO
 import com.example.duanmau_ph19020.dao.SachDAO
-import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.listOjectToString
 import com.example.duanmau_ph19020.dao.ThanhVienDAO
 import com.example.duanmau_ph19020.databinding.DialogPhieumuonBinding
 import com.example.duanmau_ph19020.databinding.FragmentQlpmBinding
 import com.example.duanmau_ph19020.model.PhieuMuon
-import java.sql.Date
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -59,7 +58,8 @@ class QLPMFragment : Fragment() {
         recyclerView.adapter = adapterPhieuMuon
     }
 
-    fun openDialog(phieuMuon: PhieuMuon,type:Int){
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
+    fun openDialog(phieuMuon: PhieuMuon, type:Int){
         dao = PhieuMuonDAO(requireContext())
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
         val builder = AlertDialog.Builder(requireContext())
@@ -68,29 +68,30 @@ class QLPMFragment : Fragment() {
             .setTitle(if(type!=0)"Sửa thông tin phiếu mượn" else "Thêm phiếu mượn")
         val dialog = builder.create()
         dialog.show()
-        val maPM_TIL = binding.dialogPmMaPM
-        maPM_TIL.editText!!.isEnabled = false
-        val spinner_tenTV = binding.dialogPmSpinnerTen
-        val spinner_tenSach = binding.dialogPmSpinnerSach
-        val ngay_tv = binding.dialogPmNgay
-        val tienThue_tv = binding.dialogPmTienThue
-        val traSach_chk = binding.dialogPmCheckBox
+        val maPMTextInputLayout = binding.dialogPmMaPM
+        maPMTextInputLayout.editText!!.isEnabled = false
+        val spinnerTenTV = binding.dialogPmSpinnerTen
+        val spinnerTenSach = binding.dialogPmSpinnerSach
+        val ngayTv = binding.dialogPmNgay
+        val tienThueTv = binding.dialogPmTienThue
+        val traSachChk = binding.dialogPmCheckBox
         val thanhVienDAO = ThanhVienDAO(requireContext())
         val sachDAO = SachDAO(requireContext())
 
         val listThanhVien = thanhVienDAO.getAll()
         val listThanhVienToString = listOjectToString(listThanhVien)
         val adapterTV = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,listThanhVienToString)
-        spinner_tenTV.adapter = adapterTV
+        spinnerTenTV.adapter = adapterTV
 
         val listSach = sachDAO.getAll()
         val listSachToString = listOjectToString(listSach)
         val adapterSach = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,listSachToString)
-        spinner_tenSach.adapter = adapterSach
-        spinner_tenSach.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spinnerTenSach.adapter = adapterSach
+        spinnerTenSach.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            @SuppressLint("SetTextI18n")
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val sach = listSach[p2]
-                tienThue_tv.text =  "Tiền thuê: ${sach.giaThue}"
+                tienThueTv.text =  "Tiền thuê: ${sach.giaThue}"
                 tempGia = sach.giaThue
             }
 
@@ -101,21 +102,21 @@ class QLPMFragment : Fragment() {
 
 
         if(type!=0){
-            maPM_TIL.editText!!.setText(phieuMuon.maPM.toString())
-            spinner_tenTV.setSelection(listThanhVien.indexOfFirst { thanhVien -> thanhVien.maTV == phieuMuon.maTV  })
-            spinner_tenSach.setSelection(listSach.indexOfFirst { sach -> sach.maSach == phieuMuon.maSach })
-            ngay_tv.text = simpleDateFormat.format(phieuMuon.ngay)
-            tienThue_tv.text = phieuMuon.tienThue.toString()
-            traSach_chk.isSelected = phieuMuon.traSach != 0
+            maPMTextInputLayout.editText!!.setText(phieuMuon.maPM.toString())
+            spinnerTenTV.setSelection(listThanhVien.indexOfFirst { thanhVien -> thanhVien.maTV == phieuMuon.maTV  })
+            spinnerTenSach.setSelection(listSach.indexOfFirst { sach -> sach.maSach == phieuMuon.maSach })
+            ngayTv.text = simpleDateFormat.format(phieuMuon.ngay)
+            tienThueTv.text = phieuMuon.tienThue.toString()
+            traSachChk.isSelected = phieuMuon.traSach != 0
         } else{
-            ngay_tv.text = "Ngày: ${simpleDateFormat.format(Calendar.getInstance().time)}"
+            ngayTv.text = "Ngày: ${simpleDateFormat.format(Calendar.getInstance().time)}"
         }
 
         binding.dialogPmCancelBtn.setOnClickListener {
             dialog.dismiss()
         }
         binding.dialogPmSaveBtn.setOnClickListener {
-            var msg = StringBuilder()
+            val msg = StringBuilder()
             if(listSach.isEmpty()){
                 msg.append("Chưa có sách nào. Vui lòng thêm sách\n")
             }
@@ -127,11 +128,11 @@ class QLPMFragment : Fragment() {
                 dialog.dismiss()
             }
 
-            phieuMuon.maSach = spinner_tenSach.selectedItem.toString().split("\t\t\t")[0].toInt()
-            phieuMuon.maTV = spinner_tenTV.selectedItem.toString().split("\t\t\t")[0].toInt()
+            phieuMuon.maSach = spinnerTenSach.selectedItem.toString().split("\t\t\t")[0].toInt()
+            phieuMuon.maTV = spinnerTenTV.selectedItem.toString().split("\t\t\t")[0].toInt()
             phieuMuon.ngay = Calendar.getInstance().time
             phieuMuon.tienThue = tempGia
-            phieuMuon.traSach = if(traSach_chk.isChecked) 1 else 0
+            phieuMuon.traSach = if(traSachChk.isChecked) 1 else 0
 
             if(type==0){
                 dao.insert(phieuMuon)

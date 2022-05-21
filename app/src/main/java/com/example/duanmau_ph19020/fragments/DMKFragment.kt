@@ -7,11 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkField
 import com.example.duanmau_ph19020.dao.ThuThuDAO
 import com.example.duanmau_ph19020.databinding.FragmentDmkBinding
-import com.google.android.material.textfield.TextInputLayout
 
 
 class DMKFragment : Fragment() {

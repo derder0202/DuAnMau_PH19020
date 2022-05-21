@@ -51,7 +51,7 @@ class TempFunc {
                 })
                 .setMessage("Bạn có muốn xóa không")
                 .setCancelable(true)
-                .setPositiveButton("YES") { dialogInterface, i ->
+                .setPositiveButton("YES") { dialogInterface, _ ->
                     when(objectAny){
                         is ThanhVien -> {
                             ThanhVienDAO(context).remove(objectAny)
@@ -73,7 +73,7 @@ class TempFunc {
                     }
                     dialogInterface.dismiss()
                 }
-                .setNegativeButton("NO") { dialogInterface, i ->
+                .setNegativeButton("NO") { dialogInterface, _ ->
                     dialogInterface.dismiss()
                 }
             val dialog = builder.create()

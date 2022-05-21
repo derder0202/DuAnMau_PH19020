@@ -1,11 +1,9 @@
 package com.example.duanmau_ph19020
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
-import android.view.View
 import android.widget.TextView
-import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -21,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         val header = navView.getHeaderView(0)
-        var title = header.findViewById<TextView>(R.id.nav_header_title)
+        val title = header.findViewById<TextView>(R.id.nav_header_title)
         val name = header.findViewById<TextView>(R.id.nav_header_subtitle)
         title.text = username
         name.text = "Chào mừng $username đến với PNLib"

@@ -4,17 +4,17 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
-import com.example.duanmau_ph19020.database.SQLite_Helper
+import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.model.LoaiSach
 
 class LoaiSachDAO(context: Context) {
     //create table LoaiSach(maLoai INTEGER PRIMARY key AUTOINCREMENT, tenLoai text not null)
     var context:Context
     var db:SQLiteDatabase
-    var sqliteHelper:SQLite_Helper
+    var sqliteHelper:SQLiteHelper
     init {
         this.context = context
-        sqliteHelper = SQLite_Helper(context)
+        sqliteHelper = SQLiteHelper(context)
         db = sqliteHelper.writableDatabase
     }
     fun insert(loaiSach: LoaiSach){

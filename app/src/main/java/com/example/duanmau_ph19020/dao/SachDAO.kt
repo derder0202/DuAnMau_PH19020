@@ -4,16 +4,16 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
-import com.example.duanmau_ph19020.database.SQLite_Helper
+import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.model.Sach
 
 class SachDAO(context: Context) {
     private var context:Context
     private var db:SQLiteDatabase
-    private var sqliteHelper:SQLite_Helper
+    private var sqliteHelper:SQLiteHelper
     init {
         this.context = context
-        sqliteHelper = SQLite_Helper(context)
+        sqliteHelper = SQLiteHelper(context)
         db = sqliteHelper.writableDatabase
     }
     //create table Sach(maSach INTEGER PRIMARY KEY AUTOINCREMENT,tenSach text not null,giaThue INTEGER not null,maloai INTEGER REFERENCES LoaiSach(maloai))
@@ -41,7 +41,7 @@ class SachDAO(context: Context) {
 
     fun getData(sql:String):ArrayList<Sach>{
         val list = ArrayList<Sach>()
-        var cursor = db.rawQuery(sql,null)
+        val cursor = db.rawQuery(sql,null)
         cursor.moveToFirst()
         while (!cursor.isAfterLast){
             list.add(Sach(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3)))

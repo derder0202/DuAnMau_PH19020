@@ -5,10 +5,10 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 
-class SQLite_Helper(context: Context) : SQLiteOpenHelper(context, name, null, version){
+class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, name, null, version){
     companion object{
-        val name = "QLTV"
-        val version = 1
+        const val name = "QLTV"
+        const val version = 1
     }
 
     val defaultData = """ INSERT INTO ThuThu(maTT,hoTen,matKhau) values ('admin','toi la admin','admin') """

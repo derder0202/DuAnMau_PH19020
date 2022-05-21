@@ -1,10 +1,11 @@
 package com.example.duanmau_ph19020.dao
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
-import com.example.duanmau_ph19020.database.SQLite_Helper
+import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.model.PhieuMuon
 import com.example.duanmau_ph19020.model.TopTen
 import java.text.SimpleDateFormat
@@ -13,12 +14,13 @@ import kotlin.collections.ArrayList
 
 class PhieuMuonDAO(context: Context) {
     var context:Context
-    var sqliteHelper:SQLite_Helper
+    var sqliteHelper:SQLiteHelper
     var db:SQLiteDatabase
+    @SuppressLint("SimpleDateFormat")
     val sdf = SimpleDateFormat("yyyy-MM-dd")
     init {
         this.context = context
-        sqliteHelper = SQLite_Helper(context)
+        sqliteHelper = SQLiteHelper(context)
         db = sqliteHelper.writableDatabase
     }
 

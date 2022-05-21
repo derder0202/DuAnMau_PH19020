@@ -1,5 +1,6 @@
 package com.example.duanmau_ph19020.fragments
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import java.util.*
 class DoanhThuFragment : Fragment() {
     private var _binding: FragmentDoanhThuBinding? = null
     private val binding get() = _binding!!
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDoanhThuBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -31,16 +33,17 @@ class DoanhThuFragment : Fragment() {
         return root
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun datePickerDialogEdittext(editText: EditText){
         val cal = Calendar.getInstance()
-        val listenerDatePickerDialog = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
+        val listenerDatePickerDialog = DatePickerDialog.OnDateSetListener { _, i, i2, i3 ->
             cal.set(Calendar.YEAR,i)
             cal.set(Calendar.MONTH,i2)
             cal.set(Calendar.DAY_OF_MONTH,i3)
             val sdf = SimpleDateFormat("yyyy-MM-dd")
             editText.setText(sdf.format(cal.time))
         }
-        editText.setOnFocusChangeListener { view, b ->
+        editText.setOnFocusChangeListener { _, b ->
             if(b){
                 DatePickerDialog(requireContext(),listenerDatePickerDialog,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
                 editText.setOnClickListener{

@@ -1,7 +1,6 @@
 package com.example.duanmau_ph19020
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -42,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
             edit.putString("password",password)
             edit.putBoolean("check",check)
         }
-        edit.commit()
+        edit.apply()
     }
     fun checkLogin(){
         val username = binding.loginUsername.text.toString()

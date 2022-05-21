@@ -1,4 +1,5 @@
 package com.example.duanmau_ph19020.adapter
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class AdapterThanhVien(private val context: Context, private var fragment:QLTVFr
         return ViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val thanhVien = list[position]
         holder.maTV.text = "Mã thành viên: ${thanhVien.maTV}"

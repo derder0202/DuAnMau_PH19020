@@ -13,13 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.adapter.AdapterSach
 import com.example.duanmau_ph19020.dao.LoaiSachDAO
 import com.example.duanmau_ph19020.dao.SachDAO
-import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkField
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkNumber
 import com.example.duanmau_ph19020.databinding.DialogSachBinding
 import com.example.duanmau_ph19020.databinding.FragmentQlsBinding
-import com.example.duanmau_ph19020.databinding.ItemSachBinding
-import com.example.duanmau_ph19020.model.LoaiSach
 import com.example.duanmau_ph19020.model.Sach
 
 class QLSFragment : Fragment() {

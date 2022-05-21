@@ -1,5 +1,6 @@
 package com.example.duanmau_ph19020.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class AdapterTop (private val context: Context,private val list: ArrayList<TopTe
         return ViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val top = list[position]
         holder.tenSach.text = "Sách: ${top.tenSach}"
