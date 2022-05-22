@@ -6,25 +6,49 @@
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dialog_qlls_maLoai"
+        android:id="@+id/dialog_qltk_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mã loại sách" />
+            android:hint="Tên đăng nhập" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dialog_qlls_tenLoai"
+        android:id="@+id/dialog_qltk_hoTen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tên loại sách" />
+            android:hint="Họ và tên" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dialog_qltk_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dialog_qltk_rePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập lại mật khẩu"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -34,7 +58,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/dialog_qlls_saveBtn"
+            android:id="@+id/dialog_qltk_saveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -43,11 +67,12 @@
             android:text="Lưu" />
 
         <Button
-            android:id="@+id/dialog_qlls_cancelBtn"
+            android:id="@+id/dialog_qltk_cancelBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
             android:layout_weight="1"
             android:text="Hủy" />
     </LinearLayout>
+
 </LinearLayout>

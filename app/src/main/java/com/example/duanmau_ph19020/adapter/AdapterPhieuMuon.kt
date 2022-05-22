@@ -34,13 +34,11 @@ class AdapterPhieuMuon(private val context: Context,private val list:ArrayList<P
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val phieuMuon = list[position]
-        val listThanhVien = ThanhVienDAO(context).getAll()
-        val listSach = SachDAO(context).getAll()
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
 
         holder.maPM.text = "Mã phiếu: ${phieuMuon.maPM}"
-        holder.tenTV.text = "Thành viên: ${listThanhVien[listThanhVien.indexOfFirst { thanhVien -> thanhVien.maTV == phieuMuon.maTV }].hoTen}"
-        holder.tenSach.text = "Tên sách: ${listSach[listSach.indexOfFirst { sach -> sach.maSach == phieuMuon.maSach  }].tenSach}"
+        holder.tenTV.text = "Thành viên: ${ThanhVienDAO(context).getID(phieuMuon.maTV.toString()).hoTen}"
+        holder.tenSach.text = "Tên sách: ${SachDAO(context).getID(phieuMuon.maSach.toString()).tenSach}"
         holder.tienThue.text = "Tiền thuê: ${phieuMuon.tienThue}"
         holder.traSach.text = if(phieuMuon.traSach==1) "Đã trả sách" else "Chưa trả sách"
         if(phieuMuon.traSach==0) holder.traSach.setTextColor(Color.RED)

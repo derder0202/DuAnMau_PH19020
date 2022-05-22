@@ -32,8 +32,7 @@ class AdapterSach (private var context: Context,private var list:ArrayList<Sach>
         holder.maSach.text = "Mã sách: ${sach.maSach}"
         holder.tenSach.text = "Tên sách: ${sach.tenSach}"
         holder.giaThue.text = "Giá thuê: ${sach.giaThue}"
-        val listLoaiSach = LoaiSachDAO(context).getAll()
-        holder.loaiSach.text = "Loại sách: ${listLoaiSach[listLoaiSach.indexOfFirst { loaiSach -> loaiSach.maLoai == sach.maLoai}].tenLoai}"
+        holder.loaiSach.text = "Loại sách: ${LoaiSachDAO(context).getID(sach.maLoai.toString()).tenLoai}"
         holder.editBtn.setOnClickListener{
             fragment.openDialog(sach,1)
         }

@@ -1,10 +1,7 @@
 package com.example.duanmau_ph19020.dao
 import android.app.AlertDialog
 import android.content.Context
-import com.example.duanmau_ph19020.fragments.QLLSFragment
-import com.example.duanmau_ph19020.fragments.QLPMFragment
-import com.example.duanmau_ph19020.fragments.QLSFragment
-import com.example.duanmau_ph19020.fragments.QLTVFragment
+import com.example.duanmau_ph19020.fragments.*
 import com.example.duanmau_ph19020.model.*
 import com.google.android.material.textfield.TextInputLayout
 
@@ -69,7 +66,10 @@ class TempFunc {
                             SachDAO(context).remove(objectAny)
                             (fragmentAny as QLSFragment).updateRecylerView()
                         }
-                        is ThuThu -> ThuThuDAO(context).remove(objectAny)
+                        is ThuThu -> {
+                            ThuThuDAO(context).remove(objectAny)
+                            (fragmentAny as TaoTaiKhoanFragment).updateRecylerView()
+                        }
                     }
                     dialogInterface.dismiss()
                 }
@@ -79,7 +79,6 @@ class TempFunc {
             val dialog = builder.create()
             dialog.show()
         }
-
     }
 }
 

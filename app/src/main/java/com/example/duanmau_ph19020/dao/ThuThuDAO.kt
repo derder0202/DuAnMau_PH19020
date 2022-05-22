@@ -16,32 +16,39 @@ class ThuThuDAO(context: Context) {
         this.context = context
         sqliteHelper = SQLiteHelper(context)
         db = sqliteHelper.writableDatabase
-
     }
 
 
     //CREATE TABLE ThuThu(maTT text PRIMARY key not null,hoTen text not null,matKhau text not null)
     fun insert(thuThu: ThuThu){
+        db = sqliteHelper.writableDatabase
         val values = ContentValues()
         values.put("maTT",thuThu.maTT)
         values.put("hoTen",thuThu.hoTen)
         values.put("matKhau",thuThu.matKhau)
         val result = if(db.insert("ThuThu",null,values)<0) "them thu thu that bai" else "them thu thu thanh cong"
         Toast.makeText(context,result, Toast.LENGTH_SHORT).show()
+        db.close()
     }
     fun update(thuThu: ThuThu){
+        db = sqliteHelper.writableDatabase
         val values = ContentValues()
         values.put("hoTen",thuThu.hoTen)
         values.put("matKhau",thuThu.matKhau)
         val result = if(db.update("ThuThu",values,"maTT= '${thuThu.maTT}' ",null)<=0) "doi mat khau that bai" else "doi mat khau thanh cong"
         Toast.makeText(context,result, Toast.LENGTH_SHORT).show()
+        db.close()
     }
     fun remove(thuThu: ThuThu){
+        db = sqliteHelper.writableDatabase
         val result = if(db.delete("ThuThu","maTT= '${thuThu.maTT}' ",null)<=0) "xoa thu thu that bai" else "xoa thu thu thanh cong"
+        PhieuMuonDAO(context).removebyTT(thuThu)
         Toast.makeText(context,result, Toast.LENGTH_SHORT).show()
+        db.close()
     }
 
     fun getData(sql:String):ArrayList<ThuThu>{
+        db = sqliteHelper.writableDatabase
         val list = ArrayList<ThuThu>()
         val cursor:Cursor = db.rawQuery(sql,null)
         cursor.moveToFirst()
@@ -50,6 +57,7 @@ class ThuThuDAO(context: Context) {
             cursor.moveToNext()
         }
         cursor.close()
+        db.close()
         return list
     }
     fun getAll() = getData("SELECT *FROM ThuThu")

@@ -18,24 +18,32 @@ class LoaiSachDAO(context: Context) {
         db = sqliteHelper.writableDatabase
     }
     fun insert(loaiSach: LoaiSach){
+        db = sqliteHelper.writableDatabase
         val values = ContentValues()
         values.put("tenLoai",loaiSach.tenLoai)
         val result = if(db.insert("LoaiSach",null,values)<0) "Them loai sach that bai" else "them loai sach thanh cong"
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
+        db.close()
     }
 
     fun update(loaiSach: LoaiSach){
+        db = sqliteHelper.writableDatabase
         val values = ContentValues()
         values.put("tenLoai",loaiSach.tenLoai)
         val result = if(db.update("LoaiSach",values,"maLoai='${loaiSach.maLoai}' ",null)<0) "Them loai sach that bai" else "them loai sach thanh cong"
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
+        db.close()
     }
     fun remove(loaiSach: LoaiSach){
+        db = sqliteHelper.writableDatabase
         val result = if(db.delete("LoaiSach","maloai='${loaiSach.maLoai}' ",null)<=0)"Xoa loai sach that bai" else "Xoa loai sach thanh cong"
+        SachDAO(context).removeSachByMaLoai(loaiSach)
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
+        db.close()
     }
 
     fun getData(sql:String):ArrayList<LoaiSach>{
+        db = sqliteHelper.writableDatabase
         val list = ArrayList<LoaiSach>()
         val cursor = db.rawQuery(sql,null)
         cursor.moveToFirst()
@@ -44,6 +52,7 @@ class LoaiSachDAO(context: Context) {
             cursor.moveToNext()
         }
         cursor.close()
+        db.close()
         return list
     }
 

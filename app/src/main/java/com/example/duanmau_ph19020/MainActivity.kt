@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.duanmau_ph19020.dao.ThuThuDAO
 import com.example.duanmau_ph19020.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         val title = header.findViewById<TextView>(R.id.nav_header_title)
         val name = header.findViewById<TextView>(R.id.nav_header_subtitle)
         title.text = username
-        name.text = "Chào mừng $username đến với PNLib"
+        name.text = "Chào mừng ${ThuThuDAO(this).getID(username).hoTen} đến với PNLib"
 
     }
 

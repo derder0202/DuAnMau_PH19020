@@ -8,6 +8,12 @@
     android:layout_margin="15dp"
     tools:context=".fragments.DMKFragment">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:src="@drawable/change_password" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dmk_oldPass"
         android:layout_width="match_parent"

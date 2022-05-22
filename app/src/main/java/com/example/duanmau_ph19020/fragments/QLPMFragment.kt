@@ -126,19 +126,21 @@ class QLPMFragment : Fragment() {
             if (msg.isNotEmpty()){
                 Toast.makeText(requireContext(),msg,Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
+            } else{
+                phieuMuon.maTT = requireActivity().intent.getStringExtra("user").toString()
+                phieuMuon.maSach = spinnerTenSach.selectedItem.toString().split("\t\t\t")[0].toInt()
+                phieuMuon.maTV = spinnerTenTV.selectedItem.toString().split("\t\t\t")[0].toInt()
+                phieuMuon.ngay = Calendar.getInstance().time
+                phieuMuon.tienThue = tempGia
+                phieuMuon.traSach = if(traSachChk.isChecked) 1 else 0
+
+                if(type==0){
+                    dao.insert(phieuMuon)
+                } else dao.update(phieuMuon)
+                updateRecylerView()
+                dialog.dismiss()
             }
 
-            phieuMuon.maSach = spinnerTenSach.selectedItem.toString().split("\t\t\t")[0].toInt()
-            phieuMuon.maTV = spinnerTenTV.selectedItem.toString().split("\t\t\t")[0].toInt()
-            phieuMuon.ngay = Calendar.getInstance().time
-            phieuMuon.tienThue = tempGia
-            phieuMuon.traSach = if(traSachChk.isChecked) 1 else 0
-
-            if(type==0){
-                dao.insert(phieuMuon)
-            } else dao.update(phieuMuon)
-            updateRecylerView()
-            dialog.dismiss()
         }
     }
 
