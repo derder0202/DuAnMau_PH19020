@@ -36,6 +36,10 @@
     <item android:title="@string/menu_title_nd">
         <menu>
             <item
+                android:id="@+id/nav_ttk"
+                android:icon="@drawable/ic_themtk"
+                android:title="@string/menu_ttk" />
+            <item
                 android:id="@+id/nav_dmk"
                 android:icon="@drawable/ic_dmk"
                 android:title="@string/menu_dmk" />

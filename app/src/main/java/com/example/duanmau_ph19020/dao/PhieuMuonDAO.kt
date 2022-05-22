@@ -80,6 +80,7 @@ class PhieuMuonDAO(context: Context) {
             cursor.moveToNext()
         }
         cursor.close()
+        db.close()
         return list
     }
 

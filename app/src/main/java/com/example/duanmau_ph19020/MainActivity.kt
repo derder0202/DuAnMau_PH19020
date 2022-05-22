@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.duanmau_ph19020.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.nav_qlpm, R.id.nav_qlls, R.id.nav_qls,R.id.nav_qltv,R.id.nav_tktop,R.id.nav_dt,R.id.nav_dmk,R.id.nav_exit), drawerLayout)
+            R.id.nav_qlpm, R.id.nav_qlls, R.id.nav_qls,R.id.nav_qltv,R.id.nav_tktop,R.id.nav_dt,R.id.nav_dmk,R.id.nav_exit,R.id.nav_ttk), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         val name = header.findViewById<TextView>(R.id.nav_header_subtitle)
         title.text = username
         name.text = "Chào mừng $username đến với PNLib"
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -52,9 +54,6 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
-
-
-
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()

@@ -3,13 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/ic_themTK.xml" value="0.1935" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/ic_themtk.xml" value="0.1935" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/outline_person_add_24.xml" value="0.1935" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/person_add-48px.xml" value="0.1935" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/activity_login.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/activity_main.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/app_bar_main.xml" value="0.18541666666666667" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/dialog_phieumuon.xml" value="0.358695652173913" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_doanh_thu.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_tao_tai_khoan.xml" value="0.18541666666666667" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_tktop.xml" value="0.358695652173913" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/item_loaisach.xml" value="0.18541666666666667" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/item_phieumuon.xml" value="0.358695652173913" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/item_sach.xml" value="0.18541666666666667" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/item_top.xml" value="0.33" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/nav_header_main.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/person_add-48px.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/menu/main.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/abc.xml" value="0.3482789855072464" />
         <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/abcc.xml" value="0.3482789855072464" />
         <entry key="..\:/Users/Administrator/OneDrive/Desktop/Android_Nang_Cao/DuAnMau_PH19020/app/src/main/res/layout/dialog_phieumuon.xml" value="0.358695652173913" />
