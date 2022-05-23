@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val username = intent.getStringExtra("user").toString()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

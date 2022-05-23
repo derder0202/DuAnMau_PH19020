@@ -14,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.loginActivityLayout.background.alpha = 130
         title = "LOGIN"
         thuThuDAO = ThuThuDAO(this)
 
