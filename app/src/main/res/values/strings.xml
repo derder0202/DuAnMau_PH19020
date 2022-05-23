@@ -45,4 +45,7 @@
     <string name="maPhieuMuon">Mã phiếu mượn</string>
     <string name="daTraSach">Đã trả sách</string>
     <string name="textview">TextView</string>
+    <string name="tenDangNhap">Tên đăng nhập</string>
+    <string name="luuMatKhau">Lưu mật khẩu</string>
+    <string name="dangNhap">Đăng nhập</string>
 </resources>

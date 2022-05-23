@@ -30,7 +30,7 @@
             android:id="@+id/login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ten dang nhap" />
+            android:hint="@string/tenDangNhap" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -44,7 +44,7 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mat khau"
+            android:hint="@string/password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,7 +52,7 @@
         android:id="@+id/login_checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lưu mật khẩu" />
+        android:text="@string/luuMatKhau" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,18 +63,18 @@
             android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:layout_marginLeft="30dp"
-            android:text="Đăng nhập" />
+            android:layout_marginStart="30dp"
+            android:text="@string/dangNhap" />
 
         <Button
             android:id="@+id/login_resetBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            android:text="Hủy" />
+            android:layout_marginEnd="20dp"
+            android:text="@string/cancelBtn" />
     </LinearLayout>
 
 </LinearLayout>
