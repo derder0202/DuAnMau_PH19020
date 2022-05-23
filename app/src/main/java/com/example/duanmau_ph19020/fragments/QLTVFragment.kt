@@ -29,6 +29,7 @@ class QLTVFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentQltvBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.QLTVFragmentLayout.background.alpha = 130
         thanhVienDAO = ThanhVienDAO(requireContext())
 
         binding.qltvFab.setOnClickListener{

@@ -29,4 +29,20 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="menu_ttk">Quản lý tài khoản</string>
+    <string name="dialog_sach_masach">Mã sách</string>
+    <string name="dialog_sach_tenSach">Tên sách</string>
+    <string name="dialog_sach_giaThue">Giá thuê</string>
+    <string name="dialog_sach_saveBtn">Lưu</string>
+    <string name="dialog_sach_cancelBtn">Hủy</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="hoTen">Họ và tên</string>
+    <string name="password">Mật khẩu</string>
+    <string name="rePassword">Nhập lại mật khẩu</string>
+    <string name="saveBtn">Lưu</string>
+    <string name="cancelBtn">Hủy</string>
+    <string name="maLoaiSach">Mã loại sách</string>
+    <string name="TenLoaiSach">Tên loại sách</string>
+    <string name="maPhieuMuon">Mã phiếu mượn</string>
+    <string name="daTraSach">Đã trả sách</string>
+    <string name="textview">TextView</string>
 </resources>

@@ -24,6 +24,7 @@ class TKTopFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentTktopBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.TopFragmentLayout.background.alpha = 130
         recyclerView = binding.topRecylerView
         phieuMuonDAO = PhieuMuonDAO(requireContext())
         listTop = phieuMuonDAO.getTop()

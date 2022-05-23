@@ -31,6 +31,7 @@ class QLSFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentQlsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.QLSFragmentLayout.background.alpha = 130
         recyclerView = binding.qlsRecylerView
         dao = SachDAO(requireContext())
         binding.qlsFab.setOnClickListener{

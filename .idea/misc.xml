@@ -6,8 +6,13 @@
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/ic_themTK.xml" value="0.1935" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/ic_themtk.xml" value="0.1935" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/outline_person_add_24.xml" value="0.1935" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/outline_person_outline_24.xml" value="0.191" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/person_add-48px.xml" value="0.1935" />
-        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/activity_login.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable-v24/spinner_arrow.xml" value="0.191" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable/gradient_spinner.xml" value="0.19" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable/outline_lock_24.xml" value="0.191" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/drawable/spinner_background.xml" value="0.191" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/activity_main.xml" value="0.18541666666666667" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/app_bar_main.xml" value="0.18541666666666667" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/dialog_phieumuon.xml" value="0.358695652173913" />
@@ -15,8 +20,9 @@
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/dialog_qltk.xml" value="0.358695652173913" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/dialog_sach.xml" value="0.358695652173913" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/dialog_thanhvien.xml" value="0.358695652173913" />
-        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_dmk.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_dmk.xml" value="0.33" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_doanh_thu.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_exit.xml" value="0.35833333333333334" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_qlls.xml" value="0.358695652173913" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_qlpm.xml" value="0.358695652173913" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/fragment_qls.xml" value="0.358695652173913" />
@@ -28,7 +34,7 @@
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/item_sach.xml" value="0.18541666666666667" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/item_thanhvien.xml" value="0.358695652173913" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/item_top.xml" value="0.33" />
-        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/nav_header_main.xml" value="0.18541666666666667" />
+        <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/nav_header_main.xml" value="0.33" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/layout/person_add-48px.xml" value="0.18541666666666667" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="..\:/STUDY/Android Studio/DuAnMau/app/src/main/res/menu/main.xml" value="0.18541666666666667" />

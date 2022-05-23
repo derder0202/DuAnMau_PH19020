@@ -42,6 +42,7 @@ class QLPMFragment : Fragment() {
 
         _binding = FragmentQlpmBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.QLPMFragmentLayout.background.alpha = 130
         recyclerView = binding.qlpmRecylerView
         binding.qlpmFab.setOnClickListener {
             openDialog(PhieuMuon(),0)

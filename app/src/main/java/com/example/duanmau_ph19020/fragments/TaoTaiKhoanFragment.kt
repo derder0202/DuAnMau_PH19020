@@ -35,23 +35,12 @@ class TaoTaiKhoanFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentTaoTaiKhoanBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val username = requireActivity().intent.getStringExtra("user")
-        if(username!="admin"){
-            Toast.makeText(requireContext(),"Bạn không phải admin",Toast.LENGTH_SHORT).show()
-            val navView = requireActivity().findViewById<NavigationView>(R.id.nav_view)
-            navView.menu.getItem(0).isChecked = true
-            (activity as AppCompatActivity).supportActionBar?.title = "Quản lý Phiếu Mượn"
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ttkFragment,QLPMFragment()).commit()
-        } else{
-            recyclerView = binding.qltkRecylerView
-            binding.qltkFab.setOnClickListener {
-                openDialog(ThuThu(),0)
-            }
-            updateRecylerView()
+        binding.ttkFragmentLayout.background.alpha = 130
+        recyclerView = binding.qltkRecylerView
+        binding.qltkFab.setOnClickListener {
+            openDialog(ThuThu(),0)
         }
-
-
+        updateRecylerView()
         return root
     }
 

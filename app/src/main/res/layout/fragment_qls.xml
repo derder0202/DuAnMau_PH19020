@@ -2,9 +2,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/QLSFragmentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A9A9A9"
+    android:background="@drawable/nenconvert"
     tools:context=".fragments.QLSFragment">
 
     <androidx.recyclerview.widget.RecyclerView

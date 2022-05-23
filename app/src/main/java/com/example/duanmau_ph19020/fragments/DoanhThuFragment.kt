@@ -21,6 +21,7 @@ class DoanhThuFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDoanhThuBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.DoanhThuFragmentLayout.background.alpha = 130
         val tuNgay = binding.dtTuNgay
         val denNgay = binding.dtDenNgay
         datePickerDialogEdittext(tuNgay)

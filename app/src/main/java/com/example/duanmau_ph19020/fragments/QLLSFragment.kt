@@ -31,6 +31,7 @@ class QLLSFragment : Fragment() {
     ): View {
         _binding = FragmentQllsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.QLLSFragmentLayout.background.alpha = 130
         recyclerView = binding.qllsRecylerView
         dao = LoaiSachDAO(requireContext())
         binding.qllsFab.setOnClickListener{

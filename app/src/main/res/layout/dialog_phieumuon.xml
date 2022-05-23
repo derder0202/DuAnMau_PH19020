@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dialog_pm_maPM"
@@ -14,47 +15,47 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mã phiếu mượn" />
+            android:hint="@string/maPhieuMuon" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/dialog_pm_spinnerTen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
         android:layout_marginTop="10dp"
+        android:minHeight="48dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
         android:id="@+id/dialog_pm_spinnerSach"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
         android:layout_marginTop="10dp"
+        android:minHeight="48dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/dialog_pm_ngay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="TextView" />
+        android:text="@string/textview" />
 
     <TextView
         android:id="@+id/dialog_pm_tienThue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="TextView" />
+        android:text="@string/textview" />
 
     <CheckBox
         android:id="@+id/dialog_pm_checkBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Đã trả sách" />
+        android:text="@string/daTraSach" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,17 +67,17 @@
             android:id="@+id/dialog_pm_saveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="Lưu"/>
+            android:layout_weight="1"
+            android:text="@string/saveBtn" />
 
         <Button
             android:id="@+id/dialog_pm_cancelBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
             android:layout_weight="1"
-            android:layout_marginRight="30dp"
-            android:text="Hủy" />
+            android:text="@string/cancelBtn" />
     </LinearLayout>
 </LinearLayout>

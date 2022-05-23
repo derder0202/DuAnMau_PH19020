@@ -19,6 +19,7 @@ class DMKFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDmkBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.DMKFragmentLayout.background.alpha = 130
         dao = ThuThuDAO(requireContext())
         binding.dmkSaveBtn.setOnClickListener {
             if(valiDateForm()){
