@@ -41,12 +41,17 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_qlpm, R.id.nav_qlls, R.id.nav_qls,R.id.nav_qltv,R.id.nav_tktop,R.id.nav_dt,R.id.nav_dmk,R.id.nav_exit,R.id.nav_ttk), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        if(username!="admin"){
+            val menu = navView.menu
+            menu.findItem(R.id.nav_ttk).isVisible = false
+        }
 
         val header = navView.getHeaderView(0)
         val title = header.findViewById<TextView>(R.id.nav_header_title)
         val name = header.findViewById<TextView>(R.id.nav_header_subtitle)
         title.text = username
         name.text = "Chào mừng ${ThuThuDAO(this).getID(username).hoTen} đến với PNLib"
+
 
     }
 

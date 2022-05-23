@@ -54,8 +54,6 @@ class SachDAO(context: Context) {
         }
     }
 
-
-
     fun getData(sql:String):ArrayList<Sach>{
         db = sqliteHelper.writableDatabase
         val list = ArrayList<Sach>()
@@ -71,7 +69,6 @@ class SachDAO(context: Context) {
     }
 
     fun getListSachByMaLoai(maLoai:String) = getData(("SELECT *FROM Sach WHERE maLoai = $maLoai"))
-
     fun getAll() = getData("SELECT *FROM Sach")
     fun getID(id:String) = getData("SELECT *FROM Sach WHERE maSach = '$id' ")[0]
 
