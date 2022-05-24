@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
+import com.example.duanmau_ph19020.dao.TempFunc.Companion.getData
 import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.model.*
 import java.text.SimpleDateFormat
@@ -63,21 +64,21 @@ class PhieuMuonDAO(context: Context) {
     fun removebyTV(thanhVien: ThanhVien) = db.delete("PhieuMuon","maTV = '${thanhVien.maTV}' ",null)
     fun removebyTT(thuThu: ThuThu) = db.delete("PhieuMuon","maTT = '${thuThu.maTT}' ",null)
 
-    fun getData(sql:String):ArrayList<PhieuMuon>{
-        db = sqliteHelper.writableDatabase
-        val list = ArrayList<PhieuMuon>()
-        val cursor = db.rawQuery(sql,null)
-        cursor.moveToFirst()
-        while (!cursor.isAfterLast){
-            list.add(PhieuMuon(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3),sdf.parse(cursor.getString(4)) as Date,cursor.getInt(5),cursor.getInt(6)))
-            cursor.moveToNext()
-        }
-        cursor.close()
-        db.close()
-        return list
-    }
-    fun getAll() = getData("SELECT *FROM PhieuMuon")
-    fun getID(id:String) = getData("SELECT *FROM PhieuMuon WHERE maPM = '$id' ")[0]
+//    fun getData(sql:String):ArrayList<PhieuMuon>{
+//        db = sqliteHelper.writableDatabase
+//        val list = ArrayList<PhieuMuon>()
+//        val cursor = db.rawQuery(sql,null)
+//        cursor.moveToFirst()
+//        while (!cursor.isAfterLast){
+//            list.add(PhieuMuon(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3),sdf.parse(cursor.getString(4)) as Date,cursor.getInt(5),cursor.getInt(6)))
+//            cursor.moveToNext()
+//        }
+//        cursor.close()
+//        db.close()
+//        return list
+//    }
+    fun getAll() = getData<PhieuMuon>("SELECT *FROM PhieuMuon",context)
+    fun getID(id:String) = getData<PhieuMuon>("SELECT *FROM PhieuMuon WHERE maPM = '$id' ",context)[0]
 
 
     fun getTop():ArrayList<TopTen>{

@@ -69,7 +69,7 @@ class SachDAO(context: Context) {
     }
 
     fun getListSachByMaLoai(maLoai:String) = getData(("SELECT *FROM Sach WHERE maLoai = $maLoai"))
-    fun getAll() = getData("SELECT *FROM Sach")
+    fun getAll() = TempFunc.getData<Sach>("SELECT *FROM Sach",context)
     fun getID(id:String) = getData("SELECT *FROM Sach WHERE maSach = '$id' ")[0]
 
 }

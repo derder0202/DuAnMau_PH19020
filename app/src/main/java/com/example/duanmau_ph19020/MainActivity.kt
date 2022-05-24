@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         title.text = username
         name.text = "Chào mừng ${ThuThuDAO(this).getID(username).hoTen} đến với PNLib"
 
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

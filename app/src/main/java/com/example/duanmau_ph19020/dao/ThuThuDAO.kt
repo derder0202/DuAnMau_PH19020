@@ -50,7 +50,7 @@ class ThuThuDAO(context: Context) {
     fun getData(sql:String):ArrayList<ThuThu>{
         db = sqliteHelper.writableDatabase
         val list = ArrayList<ThuThu>()
-        val cursor:Cursor = db.rawQuery(sql,null)
+        val cursor = db.rawQuery(sql,null)
         cursor.moveToFirst()
         while (!cursor.isAfterLast){
             list.add(ThuThu(cursor.getString(0),cursor.getString(1),cursor.getString(2)))

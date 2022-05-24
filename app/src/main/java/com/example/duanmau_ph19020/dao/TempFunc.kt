@@ -1,9 +1,16 @@
 package com.example.duanmau_ph19020.dao
 import android.app.AlertDialog
 import android.content.Context
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
+import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.fragments.*
 import com.example.duanmau_ph19020.model.*
 import com.google.android.material.textfield.TextInputLayout
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.reflect.typeOf
 
 class TempFunc {
     companion object{
@@ -78,6 +85,54 @@ class TempFunc {
                 }
             val dialog = builder.create()
             dialog.show()
+        }
+        inline fun <reified T> getData(sql:String, context: Context):ArrayList<T>{
+            val list = ArrayList<T>()
+            val sqLiteHelper = SQLiteHelper(context)
+            val sqLiteDatabase = sqLiteHelper.writableDatabase
+            val cursor = sqLiteDatabase.rawQuery(sql,null)
+            val sdf = SimpleDateFormat("yyyy-MM-dd")
+            cursor.moveToFirst()
+            while (!cursor.isAfterLast){
+                val model = genericsModel(T::class.java).getObject()
+                when(model){
+                    is ThanhVien -> {
+                        model.maTV = cursor.getInt(0)
+                        model.hoTen = cursor.getString(1)
+                        model.namSinh = cursor.getString(2)
+                    }
+                    is LoaiSach -> {
+                        model.maLoai = cursor.getInt(0)
+                        model.tenLoai = cursor.getString(1)
+                    }
+                    // PhieuMuon(var maPM:Int=0,var maTT:String="",var maTV:Int=0,var maSach:Int=0,var ngay:Date=Date(),var traSach:Int=0,var tienThue:Int=0)
+                    is PhieuMuon -> {
+                        model.maPM = cursor.getInt(0)
+                        model.maTT = cursor.getString(1)
+                        model.maTV = cursor.getInt(2)
+                        model.maSach = cursor.getInt(3)
+                        model.ngay = sdf.parse(cursor.getString(4)) as Date
+                        model.traSach = cursor.getInt(5)
+                        model.tienThue = cursor.getInt(6)
+                    }
+                    // Sach(var maSach:Int=0,var tenSach:String="",var giaThue:Int=0,var maLoai:Int=0)
+                    is Sach -> {
+                        model.maSach = cursor.getInt(0)
+                        model.tenSach = cursor.getString(1)
+                        model.giaThue = cursor.getInt(2)
+                        model.maLoai = cursor.getInt(3)
+                    }
+                    is ThuThu -> {
+                        model.maTT = cursor.getString(0)
+                        model.hoTen = cursor.getString(1)
+                        model.matKhau = cursor.getString(2)
+                    }
+                }
+                list.add(model)
+                cursor.moveToNext()
+            }
+            cursor.close()
+            return list
         }
     }
 }

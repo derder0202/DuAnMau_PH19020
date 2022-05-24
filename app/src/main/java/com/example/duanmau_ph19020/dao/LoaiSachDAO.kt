@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
+import com.example.duanmau_ph19020.dao.TempFunc.Companion.getData
 import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.model.LoaiSach
 
@@ -42,21 +43,21 @@ class LoaiSachDAO(context: Context) {
         db.close()
     }
 
-    fun getData(sql:String):ArrayList<LoaiSach>{
-        db = sqliteHelper.writableDatabase
-        val list = ArrayList<LoaiSach>()
-        val cursor = db.rawQuery(sql,null)
-        cursor.moveToFirst()
-        while (!cursor.isAfterLast){
-            list.add(LoaiSach(cursor.getInt(0),cursor.getString(1)))
-            cursor.moveToNext()
-        }
-        cursor.close()
-        db.close()
-        return list
-    }
+//    fun getData(sql:String):ArrayList<LoaiSach>{
+//        db = sqliteHelper.writableDatabase
+//        val list = ArrayList<LoaiSach>()
+//        val cursor = db.rawQuery(sql,null)
+//        cursor.moveToFirst()
+//        while (!cursor.isAfterLast){
+//            list.add(LoaiSach(cursor.getInt(0),cursor.getString(1)))
+//            cursor.moveToNext()
+//        }
+//        cursor.close()
+//        db.close()
+//        return list
+//    }
 
-    fun getAll() = getData("SELECT *FROM LoaiSach")
-    fun getID(id:String) = getData("SELECT *FROM LoaiSach WHERE maLoai = '$id' ")[0]
+    fun getAll() = getData<LoaiSach>("SELECT *FROM LoaiSach",context)
+    fun getID(id:String) = getData<LoaiSach>("SELECT *FROM LoaiSach WHERE maLoai = '$id' ",context)[0]
 
 }
