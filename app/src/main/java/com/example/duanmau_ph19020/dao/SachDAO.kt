@@ -55,20 +55,6 @@ class SachDAO(context: Context) {
         }
     }
 
-//    fun getData(sql:String):ArrayList<Sach>{
-//        db = sqliteHelper.writableDatabase
-//        val list = ArrayList<Sach>()
-//        val cursor = db.rawQuery(sql,null)
-//        cursor.moveToFirst()
-//        while (!cursor.isAfterLast){
-//            list.add(Sach(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3)))
-//            cursor.moveToNext()
-//        }
-//        cursor.close()
-//        db.close()
-//        return list
-//    }
-
     fun getListSachByMaLoai(maLoai:String) = getData<Sach>("SELECT *FROM Sach WHERE maLoai = $maLoai",context)
     fun getAll() = getData<Sach>("SELECT *FROM Sach",context)
     fun getID(id:String) = getData<Sach>("SELECT *FROM Sach WHERE maSach = '$id' ",context)[0]

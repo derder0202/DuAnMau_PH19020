@@ -64,19 +64,6 @@ class PhieuMuonDAO(context: Context) {
     fun removebyTV(thanhVien: ThanhVien) = db.delete("PhieuMuon","maTV = '${thanhVien.maTV}' ",null)
     fun removebyTT(thuThu: ThuThu) = db.delete("PhieuMuon","maTT = '${thuThu.maTT}' ",null)
 
-//    fun getData(sql:String):ArrayList<PhieuMuon>{
-//        db = sqliteHelper.writableDatabase
-//        val list = ArrayList<PhieuMuon>()
-//        val cursor = db.rawQuery(sql,null)
-//        cursor.moveToFirst()
-//        while (!cursor.isAfterLast){
-//            list.add(PhieuMuon(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3),sdf.parse(cursor.getString(4)) as Date,cursor.getInt(5),cursor.getInt(6)))
-//            cursor.moveToNext()
-//        }
-//        cursor.close()
-//        db.close()
-//        return list
-//    }
     fun getAll() = getData<PhieuMuon>("SELECT *FROM PhieuMuon",context)
     fun getID(id:String) = getData<PhieuMuon>("SELECT *FROM PhieuMuon WHERE maPM = '$id' ",context)[0]
     fun getTop() = getData<TopTen>("SELECT Sach.tenSach, count(PhieuMuon.maSach) FROM PhieuMuon \n" +

@@ -1,4 +1,5 @@
 package com.example.duanmau_ph19020.dao
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.database.Cursor
@@ -12,6 +13,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.reflect.typeOf
 
+@SuppressLint("SimpleDateFormat")
 class TempFunc {
     companion object{
         fun checkField(check: TextInputLayout):Boolean{
@@ -43,7 +45,7 @@ class TempFunc {
             }
             return listString
         }
-        fun removeDialog(objectAny: Any,context: Context,fragmentAny:Any){
+        fun removeDialog(objectAny: Any,context: Context, fragmentAny:Any){
             val builder = AlertDialog.Builder(context)
                 .setTitle(when(objectAny){
                     is ThanhVien -> "Xóa thành viên"
@@ -94,48 +96,20 @@ class TempFunc {
             val sdf = SimpleDateFormat("yyyy-MM-dd")
             cursor.moveToFirst()
             while (!cursor.isAfterLast){
-                var model = genericsModel(T::class.java).getObject()
+                val model = genericsModel(T::class.java).getObject()
                 when(model){
-                    is ThanhVien -> model = ThanhVien(cursor.getInt(0),cursor.getString(1),cursor.getString(2)) as T
-                    is LoaiSach -> {
-                        model.maLoai = cursor.getInt(0)
-                        model.tenLoai = cursor.getString(1)
-                    }
-                    // PhieuMuon(var maPM:Int=0,var maTT:String="",var maTV:Int=0,var maSach:Int=0,var ngay:Date=Date(),var traSach:Int=0,var tienThue:Int=0)
-                    is PhieuMuon -> {
-                        model.maPM = cursor.getInt(0)
-                        model.maTT = cursor.getString(1)
-                        model.maTV = cursor.getInt(2)
-                        model.maSach = cursor.getInt(3)
-                        model.ngay = sdf.parse(cursor.getString(4)) as Date
-                        model.traSach = cursor.getInt(5)
-                        model.tienThue = cursor.getInt(6)
-                    }
-                    // Sach(var maSach:Int=0,var tenSach:String="",var giaThue:Int=0,var maLoai:Int=0)
-                    is Sach -> {
-                        model.maSach = cursor.getInt(0)
-                        model.tenSach = cursor.getString(1)
-                        model.giaThue = cursor.getInt(2)
-                        model.maLoai = cursor.getInt(3)
-                    }
-                    is ThuThu -> {
-                        model.maTT = cursor.getString(0)
-                        model.hoTen = cursor.getString(1)
-                        model.matKhau = cursor.getString(2)
-                    }
-                    is TopTen -> {
-                        model.tenSach = cursor.getString(0)
-                        model.soLuong = cursor.getInt(1)
-                    }
+                    is ThanhVien -> list.add(ThanhVien(cursor.getInt(0),cursor.getString(1),cursor.getString(2)) as T)
+                    is LoaiSach -> list.add(LoaiSach(cursor.getInt(0),cursor.getString(1)) as T)
+                    is PhieuMuon -> list.add(PhieuMuon(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3),sdf.parse(cursor.getString(4)) as Date,cursor.getInt(5),cursor.getInt(6)) as T)
+                    is Sach -> list.add(Sach(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3)) as T)
+                    is ThuThu -> list.add(ThuThu(cursor.getString(0),cursor.getString(1),cursor.getString(2)) as T)
+                    is TopTen -> list.add(TopTen(cursor.getString(0),cursor.getInt(1)) as T)
                 }
                 list.add(model)
                 cursor.moveToNext()
             }
             cursor.close()
             return list
-        }
-        fun <T> removeTable(){
-
         }
     }
 }

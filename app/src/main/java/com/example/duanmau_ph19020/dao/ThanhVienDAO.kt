@@ -43,19 +43,6 @@ class ThanhVienDAO (context: Context){
         db.close()
     }
 
-//    fun getData(sql:String):ArrayList<ThanhVien>{
-//        db = sqliteHelper.writableDatabase
-//        val list = ArrayList<ThanhVien>()
-//        val cursor = db.rawQuery(sql,null)
-//        cursor.moveToFirst()
-//        while (!cursor.isAfterLast){
-//            list.add(ThanhVien(cursor.getInt(0),cursor.getString(1),cursor.getString(2)))
-//            cursor.moveToNext()
-//        }
-//        cursor.close()
-//        db.close()
-//        return list
-//    }
     fun getAll() = getData<ThanhVien>("SELECT *FROM ThanhVien",context)
     fun getID(id:String) = getData<ThanhVien>("SELECT *FROM ThanhVien WHERE maTV= '$id' ",context)[0]
 

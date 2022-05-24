@@ -43,20 +43,6 @@ class LoaiSachDAO(context: Context) {
         db.close()
     }
 
-//    fun getData(sql:String):ArrayList<LoaiSach>{
-//        db = sqliteHelper.writableDatabase
-//        val list = ArrayList<LoaiSach>()
-//        val cursor = db.rawQuery(sql,null)
-//        cursor.moveToFirst()
-//        while (!cursor.isAfterLast){
-//            list.add(LoaiSach(cursor.getInt(0),cursor.getString(1)))
-//            cursor.moveToNext()
-//        }
-//        cursor.close()
-//        db.close()
-//        return list
-//    }
-
     fun getAll() = getData<LoaiSach>("SELECT *FROM LoaiSach",context)
     fun getID(id:String) = getData<LoaiSach>("SELECT *FROM LoaiSach WHERE maLoai = '$id' ",context)[0]
 

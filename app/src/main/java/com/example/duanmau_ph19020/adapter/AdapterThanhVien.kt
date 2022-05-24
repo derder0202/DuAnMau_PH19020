@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.dao.TempFunc
+import com.example.duanmau_ph19020.dao.TempFunc.Companion.removeDialog
 import com.example.duanmau_ph19020.databinding.ItemThanhvienBinding
 import com.example.duanmau_ph19020.fragments.QLTVFragment
 import com.example.duanmau_ph19020.model.ThanhVien
@@ -26,7 +27,7 @@ class AdapterThanhVien(private val context: Context, private var fragment:QLTVFr
             fragment.openDialog(thanhVien,1)
         }
         holder.removeBtn.setOnClickListener{
-            TempFunc.removeDialog(thanhVien,context,fragment)
+            removeDialog(thanhVien,context,fragment)
         }
     }
 
