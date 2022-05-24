@@ -8,4 +8,5 @@ class genericsModel<T>(tclass:Class<T>) {
     fun getObject():T{
         return this.toObject
     }
+
 }

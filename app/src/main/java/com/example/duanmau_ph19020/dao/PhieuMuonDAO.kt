@@ -79,23 +79,9 @@ class PhieuMuonDAO(context: Context) {
 //    }
     fun getAll() = getData<PhieuMuon>("SELECT *FROM PhieuMuon",context)
     fun getID(id:String) = getData<PhieuMuon>("SELECT *FROM PhieuMuon WHERE maPM = '$id' ",context)[0]
-
-
-    fun getTop():ArrayList<TopTen>{
-        db = sqliteHelper.writableDatabase
-        val list = ArrayList<TopTen>()
-        val cursor = db.rawQuery("SELECT Sach.tenSach, count(PhieuMuon.maSach) FROM PhieuMuon \n" +
-                "JOIN Sach on Sach.maSach = PhieuMuon.MaSach\n" +
-                "GROUP BY Sach.tenSach ORDER BY count(PhieuMuon.maSach) DESC LIMIT 10  ",null)
-        cursor.moveToFirst()
-        while (!cursor.isAfterLast){
-            list.add(TopTen(cursor.getString(0),cursor.getInt(1)))
-            cursor.moveToNext()
-        }
-        cursor.close()
-        db.close()
-        return list
-    }
+    fun getTop() = getData<TopTen>("SELECT Sach.tenSach, count(PhieuMuon.maSach) FROM PhieuMuon \n" +
+            "JOIN Sach on Sach.maSach = PhieuMuon.MaSach\n" +
+            "GROUP BY Sach.tenSach ORDER BY count(PhieuMuon.maSach) DESC LIMIT 10  ",context)
 
     fun getDoanhThu(tuNgay:String,denNgay:String):Int{
         db = sqliteHelper.writableDatabase

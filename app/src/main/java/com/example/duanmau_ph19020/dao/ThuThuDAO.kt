@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
+import com.example.duanmau_ph19020.dao.TempFunc.Companion.getData
 import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.model.ThuThu
 
@@ -47,20 +48,20 @@ class ThuThuDAO(context: Context) {
         db.close()
     }
 
-    fun getData(sql:String):ArrayList<ThuThu>{
-        db = sqliteHelper.writableDatabase
-        val list = ArrayList<ThuThu>()
-        val cursor = db.rawQuery(sql,null)
-        cursor.moveToFirst()
-        while (!cursor.isAfterLast){
-            list.add(ThuThu(cursor.getString(0),cursor.getString(1),cursor.getString(2)))
-            cursor.moveToNext()
-        }
-        cursor.close()
-        db.close()
-        return list
-    }
-    fun getAll() = getData("SELECT *FROM ThuThu")
-    fun getID(id:String) = getData("SELECT *FROM ThuThu WHERE maTT= '$id' ")[0]
-    fun checkLogin(id: String,password:String) = getData("SELECT *FROM ThuThu WHERE maTT like '$id' AND matKhau like '$password' ").size != 0
+//    fun getData(sql:String):ArrayList<ThuThu>{
+//        db = sqliteHelper.writableDatabase
+//        val list = ArrayList<ThuThu>()
+//        val cursor = db.rawQuery(sql,null)
+//        cursor.moveToFirst()
+//        while (!cursor.isAfterLast){
+//            list.add(ThuThu(cursor.getString(0),cursor.getString(1),cursor.getString(2)))
+//            cursor.moveToNext()
+//        }
+//        cursor.close()
+//        db.close()
+//        return list
+//    }
+    fun getAll() = getData<ThuThu>("SELECT *FROM ThuThu",context)
+    fun getID(id:String) = getData<ThuThu>("SELECT *FROM ThuThu WHERE maTT= '$id' ",context)[0]
+    fun checkLogin(id: String,password:String) = getData<ThuThu>("SELECT *FROM ThuThu WHERE maTT like '$id' AND matKhau like '$password' ",context).size != 0
 }

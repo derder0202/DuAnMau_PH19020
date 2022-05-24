@@ -94,13 +94,9 @@ class TempFunc {
             val sdf = SimpleDateFormat("yyyy-MM-dd")
             cursor.moveToFirst()
             while (!cursor.isAfterLast){
-                val model = genericsModel(T::class.java).getObject()
+                var model = genericsModel(T::class.java).getObject()
                 when(model){
-                    is ThanhVien -> {
-                        model.maTV = cursor.getInt(0)
-                        model.hoTen = cursor.getString(1)
-                        model.namSinh = cursor.getString(2)
-                    }
+                    is ThanhVien -> model = ThanhVien(cursor.getInt(0),cursor.getString(1),cursor.getString(2)) as T
                     is LoaiSach -> {
                         model.maLoai = cursor.getInt(0)
                         model.tenLoai = cursor.getString(1)
@@ -127,12 +123,19 @@ class TempFunc {
                         model.hoTen = cursor.getString(1)
                         model.matKhau = cursor.getString(2)
                     }
+                    is TopTen -> {
+                        model.tenSach = cursor.getString(0)
+                        model.soLuong = cursor.getInt(1)
+                    }
                 }
                 list.add(model)
                 cursor.moveToNext()
             }
             cursor.close()
             return list
+        }
+        fun <T> removeTable(){
+
         }
     }
 }
