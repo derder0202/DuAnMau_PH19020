@@ -34,7 +34,7 @@ class AdapterPhieuMuon(private val context: Context,private val list:ArrayList<P
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val phieuMuon = list[position]
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy")
 
         holder.maPM.text = "Mã phiếu: ${phieuMuon.maPM}"
         holder.tenTV.text = "Thành viên: ${ThanhVienDAO(context).getID(phieuMuon.maTV.toString()).hoTen}"

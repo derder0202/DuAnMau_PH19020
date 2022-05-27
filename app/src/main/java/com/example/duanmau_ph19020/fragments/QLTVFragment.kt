@@ -88,7 +88,7 @@ class QLTVFragment : Fragment() {
             cal.set(Calendar.YEAR,i)
             cal.set(Calendar.MONTH,i2)
             cal.set(Calendar.DAY_OF_MONTH,i3)
-            val sdf = SimpleDateFormat("yyyy-MM-dd")
+            val sdf = SimpleDateFormat("dd-MM-yyyy")
             ngaySinh.editText!!.setText(sdf.format(cal.time))
         }
         ngaySinh.editText!!.setOnFocusChangeListener{ _, b ->
