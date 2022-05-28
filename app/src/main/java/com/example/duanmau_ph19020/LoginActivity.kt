@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.dao.ThuThuDAO
 import com.example.duanmau_ph19020.databinding.ActivityLoginBinding
 
@@ -27,9 +28,11 @@ class LoginActivity : AppCompatActivity() {
             checkLogin()
         }
         binding.loginResetBtn.setOnClickListener {
-            binding.loginUsername.text = null
-            binding.loginPassword.text = null
+//            binding.loginUsername.text = null
+//            binding.loginPassword.text = null
             binding.loginCheckbox.isChecked = false
+            TempFunc.resetField(binding.loginUsername,binding.loginPassword)
+
         }
     }
     fun rememberUser(user:String,password:String,check:Boolean){

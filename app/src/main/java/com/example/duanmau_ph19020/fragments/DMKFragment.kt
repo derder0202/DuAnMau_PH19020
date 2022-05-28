@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkField
+import com.example.duanmau_ph19020.dao.TempFunc.Companion.resetField
 import com.example.duanmau_ph19020.dao.ThuThuDAO
 import com.example.duanmau_ph19020.databinding.FragmentDmkBinding
 
@@ -21,30 +23,29 @@ class DMKFragment : Fragment() {
         val root: View = binding.root
         binding.DMKFragmentLayout.background.alpha = 130
         dao = ThuThuDAO(requireContext())
+        val oldPass = binding.dmkOldPass
+        val newPass = binding.dmkNewPass
+        val rePass = binding.dmkNewPassRepeat
         binding.dmkSaveBtn.setOnClickListener {
             if(valiDateForm()){
                 val preferences = requireActivity().getSharedPreferences("USER ACCOUNT",Context.MODE_PRIVATE)
                 val thuThu = dao.getID(preferences.getString("username","").toString())
-                thuThu.matKhau = binding.dmkNewPass.editText!!.text.toString()
-                Log.d("test pass",binding.dmkNewPass.editText!!.text.toString())
+                thuThu.matKhau = newPass.editText!!.text.toString()
+                Log.d("test pass",newPass.editText!!.text.toString())
                 dao.update(thuThu)
-                resetField()
+                resetField(oldPass.editText!!,newPass.editText!!,rePass.editText!!)
             }
         }
         binding.dmkResetBtn.setOnClickListener {
-            resetField()
+            resetField(oldPass.editText!!,newPass.editText!!,rePass.editText!!)
         }
-
         return root
     }
 
     private fun valiDateForm():Boolean{
-        checkField(binding.dmkOldPass)
-        checkField(binding.dmkNewPass)
-        checkField(binding.dmkNewPassRepeat)
-        if(checkField(binding.dmkOldPass) &&  checkField(binding.dmkNewPass) &&  checkField(binding.dmkNewPassRepeat)){
-            val preferences = requireActivity().getSharedPreferences("USER ACCOUNT",Context.MODE_PRIVATE)
-            val oldPass = preferences!!.getString("password","")
+        if(checkField(binding.dmkOldPass,binding.dmkNewPass,binding.dmkNewPassRepeat)){
+            val preferences = requireActivity().getSharedPreferences("USER ACCOUNT",Context.MODE_PRIVATE)!!
+            val oldPass = preferences.getString("password","")
             val newPass = binding.dmkNewPass.editText!!.text.toString()
             val rePass = binding.dmkNewPassRepeat.editText!!.text.toString()
             if(!oldPass.equals(binding.dmkOldPass.editText!!.text.toString())){
@@ -60,11 +61,6 @@ class DMKFragment : Fragment() {
         return false
     }
 
-    private fun resetField(){
-        binding.dmkNewPass.editText!!.setText("")
-        binding.dmkOldPass.editText!!.setText("")
-        binding.dmkNewPassRepeat.editText!!.setText("")
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,5 +1,6 @@
 package com.example.duanmau_ph19020.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ class AdapterLoaiSach(private val context: Context, private val list: ArrayList<
         return ViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val loaiSach = list[position]
         holder.maLoai.text = "Mã loại: ${loaiSach.maLoai} "

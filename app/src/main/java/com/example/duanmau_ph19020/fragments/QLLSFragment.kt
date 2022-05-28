@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.adapter.AdapterLoaiSach
 import com.example.duanmau_ph19020.dao.LoaiSachDAO
 import com.example.duanmau_ph19020.dao.TempFunc
+import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkField
 import com.example.duanmau_ph19020.databinding.DialogQllsBinding
 import com.example.duanmau_ph19020.databinding.FragmentQllsBinding
 import com.example.duanmau_ph19020.model.LoaiSach
@@ -70,7 +71,7 @@ class QLLSFragment : Fragment() {
         }
 
         binding.dialogQllsSaveBtn.setOnClickListener {
-            if(TempFunc.checkField(tenLoai)){
+            if(checkField(tenLoai)){
                 loaiSach.tenLoai = tenLoai.editText!!.text.toString()
                 if(type==0){
                     dao.insert(loaiSach)

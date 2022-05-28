@@ -72,13 +72,13 @@ class QLSFragment : Fragment() {
 
         binding.dialogQlsCancelBtn.setOnClickListener { dialog.dismiss() }
         binding.dialogQlsSaveBtn.setOnClickListener {
-            checkField(tenSach)
-            checkField(giaThue)
+//            checkField(tenSach)
+//            checkField(giaThue)
             if (listLoaiSach.isEmpty()){
                 Toast.makeText(requireContext(),"Bạn chưa nhập loại sách nào\nVui lòng thêm loại sách trước",Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             } else{
-                if(checkField(tenSach)&& checkField(giaThue)&& checkNumber(giaThue)){
+                if(checkField(tenSach,giaThue) && checkNumber(giaThue)){
                     sach.tenSach = tenSach.editText!!.text.toString()
                     sach.giaThue = giaThue.editText!!.text.toString().toInt()
                     sach.maLoai = spinner.selectedItem.toString().split("\t\t")[0].toInt()

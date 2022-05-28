@@ -65,11 +65,7 @@ class QLTKFragment : Fragment() {
         }
 
         binding.dialogQltkSaveBtn.setOnClickListener {
-            checkField(username)
-            checkField(hoTen)
-            checkField(password)
-            checkField(rePassword)
-            if(checkField(username)&&checkField(hoTen)&& checkField(password)&& checkField(rePassword)){
+            if(checkField(username,hoTen,password,rePassword)){
                 if(!valiDatePassword(password.editText!!.text.toString(),rePassword.editText!!.text.toString())){
                     rePassword.error = "Mật khẩu nhập lại không trùng khớp"
                 } else{

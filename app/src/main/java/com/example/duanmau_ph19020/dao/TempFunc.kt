@@ -2,26 +2,27 @@ package com.example.duanmau_ph19020.dao
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.widget.EditText
 import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.fragments.*
 import com.example.duanmau_ph19020.model.*
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import java.lang.IllegalStateException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 @SuppressLint("SimpleDateFormat")
 class TempFunc {
     companion object{
-        fun checkField(check: TextInputLayout):Boolean{
-            return if(check.editText!!.text.isEmpty()){
-                check.error = "Bạn phải nhập vào trường này"
-                false
-            } else{
-                check.error = null
-                true
+        fun checkField(vararg check: TextInputLayout):Boolean{
+            var count = 0
+            for (view in check){
+                if(view.editText!!.text.isEmpty()){
+                    view.error = "Bạn phải nhập vào trường này"
+                    count++
+                } else view.error = null
             }
+            return count==0
         }
         fun checkNumber(check: TextInputLayout):Boolean{
             try {
@@ -35,6 +36,12 @@ class TempFunc {
                 return false
             }
             return true
+        }
+        fun resetField(vararg field:EditText){
+            for(i in field){
+                i.text = null
+            }
+            field[0].requestFocus()
         }
         fun <T> listOjectToString(list:ArrayList<T>):ArrayList<String>{
             val listString = ArrayList<String>()

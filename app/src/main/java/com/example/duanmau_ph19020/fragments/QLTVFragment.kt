@@ -101,9 +101,7 @@ class QLTVFragment : Fragment() {
         }
 
         binding.dialogTvSaveBtn.setOnClickListener {
-            checkField(hoTen)
-            checkField(ngaySinh)
-            if(checkField(hoTen) && checkField(ngaySinh)){
+            if(checkField(hoTen,ngaySinh)){
                 thanhVien.hoTen = hoTen.editText!!.text.toString()
                 thanhVien.namSinh = ngaySinh.editText!!.text.toString()
                 if(type==0){

@@ -1,5 +1,6 @@
 package com.example.duanmau_ph19020.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ class AdapterTaiKhoan(private var context: Context,private var list:ArrayList<Th
         return ViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val thuThu = list[position]
         holder.username.text = "Tên đăng nhập: ${thuThu.maTT}"
@@ -30,7 +32,7 @@ class AdapterTaiKhoan(private var context: Context,private var list:ArrayList<Th
         holder.password.textSize = 14F
         
         holder.removeBtn.setOnClickListener {
-            if(holder.username.text.toString()=="admin"){
+            if(thuThu.maTT=="admin"){
                 Toast.makeText(context,"Bạn không thể xóa admin",Toast.LENGTH_SHORT).show()
             } else{
                 TempFunc.removeDialog(thuThu,context,fragment)
