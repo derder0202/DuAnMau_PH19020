@@ -23,10 +23,5 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, name, null, ver
     }
 
     override fun onUpgrade(p0: SQLiteDatabase, p1: Int, p2: Int) {
-        p0.execSQL("drop table if exists ThanhVien")
-        p0.execSQL("drop table if exists ThuThu")
-        p0.execSQL("drop table if exists LoaiSach")
-        p0.execSQL("drop table if exists Sach")
-        p0.execSQL("drop table if exists PhieuMuon")
     }
 }

@@ -48,4 +48,7 @@
     <string name="tenDangNhap">Tên đăng nhập</string>
     <string name="luuMatKhau">Lưu mật khẩu</string>
     <string name="dangNhap">Đăng nhập</string>
+    <string name="oldPass">Mật khẩu cũ</string>
+    <string name="newPass">Mật khẩu mới</string>
+    <string name="rePass">Nhập lại mật khẩu mới</string>
 </resources>

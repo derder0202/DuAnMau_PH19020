@@ -7,10 +7,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.databinding.ItemLoaisachBinding
-import com.example.duanmau_ph19020.fragments.TaoTaiKhoanFragment
+import com.example.duanmau_ph19020.fragments.QLTKFragment
 import com.example.duanmau_ph19020.model.ThuThu
 
-class AdapterTaiKhoan(private var context: Context,private var list:ArrayList<ThuThu>,private var fragment:TaoTaiKhoanFragment) : RecyclerView.Adapter<AdapterTaiKhoan.ViewHolder>() {
+class AdapterTaiKhoan(private var context: Context,private var list:ArrayList<ThuThu>,private var fragment:QLTKFragment) : RecyclerView.Adapter<AdapterTaiKhoan.ViewHolder>() {
     class ViewHolder(binding: ItemLoaisachBinding) : RecyclerView.ViewHolder(binding.root) {
         var username = binding.itemQllsMaLoai
         var password = binding.itemQllsTenLoai

@@ -37,12 +37,12 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.nav_qlpm, R.id.nav_qlls, R.id.nav_qls,R.id.nav_qltv,R.id.nav_tktop,R.id.nav_dt,R.id.nav_dmk,R.id.nav_exit,R.id.nav_ttk), drawerLayout)
+            R.id.nav_qlpm, R.id.nav_qlls, R.id.nav_qls,R.id.nav_qltv,R.id.nav_tktop,R.id.nav_dt,R.id.nav_dmk,R.id.nav_exit,R.id.nav_qltk), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         if(username!="admin"){
             val menu = navView.menu
-            menu.findItem(R.id.nav_ttk).isVisible = false
+            menu.findItem(R.id.nav_qltk).isVisible = false
         }
 
         val header = navView.getHeaderView(0)

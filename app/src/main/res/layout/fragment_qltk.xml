@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/ttkFragmentLayout"
     android:background="@drawable/nenconvert"
-    tools:context=".fragments.TaoTaiKhoanFragment">
+    tools:context=".fragments.QLTKFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/qltk_RecylerView"

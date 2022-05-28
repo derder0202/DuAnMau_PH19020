@@ -6,34 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.duanmau_ph19020.LoginActivity
-import com.example.duanmau_ph19020.R
 import com.example.duanmau_ph19020.adapter.AdapterTaiKhoan
-import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkField
 import com.example.duanmau_ph19020.dao.ThuThuDAO
-import com.example.duanmau_ph19020.databinding.ActivityMainBinding
 import com.example.duanmau_ph19020.databinding.DialogQltkBinding
-import com.example.duanmau_ph19020.databinding.FragmentExitBinding
-import com.example.duanmau_ph19020.databinding.FragmentTaoTaiKhoanBinding
+import com.example.duanmau_ph19020.databinding.FragmentQltkBinding
 import com.example.duanmau_ph19020.model.ThuThu
-import com.google.android.material.navigation.NavigationView
 
 
-class TaoTaiKhoanFragment : Fragment() {
-    private var _binding: FragmentTaoTaiKhoanBinding? = null
+
+class QLTKFragment : Fragment() {
+    private var _binding: FragmentQltkBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
     private lateinit var thuThuDAO: ThuThuDAO
     private lateinit var adapterTaiKhoan: AdapterTaiKhoan
     private lateinit var listTK:ArrayList<ThuThu>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentTaoTaiKhoanBinding.inflate(inflater, container, false)
+        _binding = FragmentQltkBinding.inflate(inflater, container, false)
         val root: View = binding.root
         binding.ttkFragmentLayout.background.alpha = 130
         recyclerView = binding.qltkRecylerView

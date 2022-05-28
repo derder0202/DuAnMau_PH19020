@@ -2,8 +2,6 @@ package com.example.duanmau_ph19020.dao
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.fragments.*
 import com.example.duanmau_ph19020.model.*
@@ -12,7 +10,6 @@ import java.lang.IllegalStateException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.reflect.typeOf
 
 @SuppressLint("SimpleDateFormat")
 class TempFunc {
@@ -78,7 +75,7 @@ class TempFunc {
                         }
                         is ThuThu -> {
                             ThuThuDAO(context).remove(objectAny)
-                            (fragmentAny as TaoTaiKhoanFragment).updateRecylerView()
+                            (fragmentAny as QLTKFragment).updateRecylerView()
                         }
                     }
                     dialogInterface.dismiss()
