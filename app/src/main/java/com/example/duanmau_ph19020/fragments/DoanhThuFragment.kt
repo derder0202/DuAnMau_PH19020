@@ -13,10 +13,12 @@ import com.example.duanmau_ph19020.databinding.FragmentDoanhThuBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+@SuppressLint("SimpleDateFormat")
 class DoanhThuFragment : Fragment() {
     private var _binding: FragmentDoanhThuBinding? = null
     private val binding get() = _binding!!
+    val sdf = SimpleDateFormat("dd-MM-yyyy")
+    val sdfSQL = SimpleDateFormat("yyyy-MM-dd")
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentDoanhThuBinding.inflate(inflater, container, false)
@@ -28,9 +30,10 @@ class DoanhThuFragment : Fragment() {
         datePickerDialogEdittext(denNgay)
 
         binding.dtTinhBtn.setOnClickListener {
-            binding.dtResult.text = "Doanh thu: ${PhieuMuonDAO(requireContext()).getDoanhThu(tuNgay.text.toString(),denNgay.text.toString())}"
+            binding.dtResult.text = "Doanh thu: ${PhieuMuonDAO(requireContext()).getDoanhThu(sdfSQL.format(
+                sdf.parse(tuNgay.text.toString())!!
+            ),denNgay.text.toString())}"
         }
-
         return root
     }
 
@@ -41,7 +44,6 @@ class DoanhThuFragment : Fragment() {
             cal.set(Calendar.YEAR,i)
             cal.set(Calendar.MONTH,i2)
             cal.set(Calendar.DAY_OF_MONTH,i3)
-            val sdf = SimpleDateFormat("yyyy-MM-dd")
             editText.setText(sdf.format(cal.time))
         }
         editText.setOnFocusChangeListener { _, b ->

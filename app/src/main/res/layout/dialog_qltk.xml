@@ -55,6 +55,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dialog_qltk_rePassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:startIconDrawable="@drawable/outline_lock_24"
+        app:endIconMode="password_toggle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

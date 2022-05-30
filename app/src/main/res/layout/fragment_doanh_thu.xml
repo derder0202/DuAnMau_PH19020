@@ -21,25 +21,37 @@
         android:focusable="true"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/dt_tuNgay"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Từ ngày"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:layout_height="match_parent"
+            app:startIconDrawable="@drawable/ic_date"
+            app:endIconMode="clear_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:minHeight="48dp"
+            android:layout_weight="1">
 
-        <EditText
-            android:id="@+id/dt_denNgay"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dt_tuNgay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tungay" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Đến ngày"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:layout_height="match_parent"
+            app:startIconDrawable="@drawable/ic_date"
+            app:endIconMode="clear_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:minHeight="48dp"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dt_denNgay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/denngay" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/dt_tinhBtn"

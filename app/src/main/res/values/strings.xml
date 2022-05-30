@@ -51,4 +51,6 @@
     <string name="oldPass">Mật khẩu cũ</string>
     <string name="newPass">Mật khẩu mới</string>
     <string name="rePass">Nhập lại mật khẩu mới</string>
+    <string name="tungay">Từ ngày</string>
+    <string name="denngay">Đến ngày</string>
 </resources>

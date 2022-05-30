@@ -10,7 +10,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dialog_qlls_maLoai"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:startIconDrawable="@drawable/outline_person_outline_24"
         app:endIconMode="clear_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -24,7 +23,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dialog_qlls_tenLoai"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:startIconDrawable="@drawable/outline_person_outline_24"
         app:endIconMode="clear_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
