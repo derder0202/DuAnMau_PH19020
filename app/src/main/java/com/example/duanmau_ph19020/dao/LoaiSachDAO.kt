@@ -10,13 +10,12 @@ import com.example.duanmau_ph19020.model.LoaiSach
 
 class LoaiSachDAO(context: Context) {
     //create table LoaiSach(maLoai INTEGER PRIMARY key AUTOINCREMENT, tenLoai text not null)
-    var context:Context
-    var db:SQLiteDatabase
-    var sqliteHelper:SQLiteHelper
+    private var context:Context
+    private lateinit var db:SQLiteDatabase
+    private var sqliteHelper:SQLiteHelper
     init {
         this.context = context
         sqliteHelper = SQLiteHelper(context)
-        db = sqliteHelper.writableDatabase
     }
     fun insert(loaiSach: LoaiSach){
         db = sqliteHelper.writableDatabase
@@ -38,7 +37,6 @@ class LoaiSachDAO(context: Context) {
     fun remove(loaiSach: LoaiSach){
         db = sqliteHelper.writableDatabase
         val result = if(db.delete("LoaiSach","maloai='${loaiSach.maLoai}' ",null)<=0)"Xoa loai sach that bai" else "Xoa loai sach thanh cong"
-        SachDAO(context).removeSachByMaLoai(loaiSach)
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
         db.close()
     }

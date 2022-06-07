@@ -11,12 +11,11 @@ import com.example.duanmau_ph19020.model.Sach
 
 class SachDAO(context: Context) {
     private var context:Context
-    private var db:SQLiteDatabase
+    private lateinit var db:SQLiteDatabase
     private var sqliteHelper:SQLiteHelper
     init {
         this.context = context
         sqliteHelper = SQLiteHelper(context)
-        db = sqliteHelper.writableDatabase
     }
     //create table Sach(maSach INTEGER PRIMARY KEY AUTOINCREMENT,tenSach text not null,giaThue INTEGER not null,maloai INTEGER REFERENCES LoaiSach(maloai))
     fun insert(sach:Sach){
@@ -43,19 +42,10 @@ class SachDAO(context: Context) {
     fun remove(sach: Sach){
         db = sqliteHelper.writableDatabase
         val result = if(db.delete("Sach","maSach= '${sach.maSach}' ",null)<=0) "Xoa sach that bai" else "Xoa sach thanh cong"
-        PhieuMuonDAO(context).removebySach(sach)
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
         db.close()
     }
 
-    fun removeSachByMaLoai(loaiSach: LoaiSach){
-        val list = getListSachByMaLoai(loaiSach.maLoai.toString())
-        for(sach in list){
-            remove(sach)
-        }
-    }
-
-    fun getListSachByMaLoai(maLoai:String) = getData<Sach>("SELECT *FROM Sach WHERE maLoai = $maLoai",context)
     fun getAll() = getData<Sach>("SELECT *FROM Sach",context)
     fun getID(id:String) = getData<Sach>("SELECT *FROM Sach WHERE maSach = '$id' ",context)[0]
 

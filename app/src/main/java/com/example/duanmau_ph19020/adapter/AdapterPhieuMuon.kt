@@ -37,8 +37,16 @@ class AdapterPhieuMuon(private val context: Context,private val list:ArrayList<P
         val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy")
 
         holder.maPM.text = "Mã phiếu: ${phieuMuon.maPM}"
-        holder.tenTV.text = "Thành viên: ${ThanhVienDAO(context).getID(phieuMuon.maTV.toString()).hoTen}"
-        holder.tenSach.text = "Tên sách: ${SachDAO(context).getID(phieuMuon.maSach.toString()).tenSach}"
+        try {
+            holder.tenTV.text = "Thành viên: ${ThanhVienDAO(context).getID(phieuMuon.maTV.toString()).hoTen}"
+        } catch (e:Exception){
+            holder.tenTV.text = "Thành viên: ${phieuMuon.tenTV} (Thành viên đã xóa khỏi hệ thống)"
+        }
+        try{
+            holder.tenSach.text = "Tên sách: ${SachDAO(context).getID(phieuMuon.maSach.toString()).tenSach}"
+        } catch (e:Exception){
+            holder.tenSach.text = "Tên sách: ${phieuMuon.tenSach} (Sách đã xóa khỏi hệ thống)"
+        }
         holder.tienThue.text = "Tiền thuê: ${phieuMuon.tienThue}"
         holder.traSach.text = if(phieuMuon.traSach==1) "Đã trả sách" else "Chưa trả sách"
         if(phieuMuon.traSach==0) holder.traSach.setTextColor(Color.RED)

@@ -10,13 +10,12 @@ import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.model.ThuThu
 
 class ThuThuDAO(context: Context) {
-    private var db: SQLiteDatabase
+    private lateinit var db: SQLiteDatabase
     private var sqliteHelper: SQLiteHelper
     private var context:Context
     init {
         this.context = context
         sqliteHelper = SQLiteHelper(context)
-        db = sqliteHelper.writableDatabase
     }
 
 
@@ -43,7 +42,6 @@ class ThuThuDAO(context: Context) {
     fun remove(thuThu: ThuThu){
         db = sqliteHelper.writableDatabase
         val result = if(db.delete("ThuThu","maTT= '${thuThu.maTT}' ",null)<=0) "xoa thu thu that bai" else "xoa thu thu thanh cong"
-        PhieuMuonDAO(context).removebyTT(thuThu)
         Toast.makeText(context,result, Toast.LENGTH_SHORT).show()
         db.close()
     }

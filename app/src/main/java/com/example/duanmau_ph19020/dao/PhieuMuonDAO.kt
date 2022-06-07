@@ -13,25 +13,26 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class PhieuMuonDAO(context: Context) {
-    var context:Context
-    var sqliteHelper:SQLiteHelper
-    var db:SQLiteDatabase
+    private var context:Context
+    private var sqliteHelper:SQLiteHelper
+    private lateinit var db:SQLiteDatabase
     @SuppressLint("SimpleDateFormat")
     val sdf = SimpleDateFormat("yyyy-MM-dd")
     init {
         this.context = context
         sqliteHelper = SQLiteHelper(context)
-        db = sqliteHelper.writableDatabase
     }
 
-    //CREATE TABLE PhieuMuon(maPM INTEGER PRIMARY KEY AUTOINCREMENT,maTT text not null REFERENCES ThuThu(maTT),maTV INTEGER not null REFERENCES ThanhVien(maTV),
-// maSach INTEGER not null REFERENCES Sach(maSach),Ngay date not null,traSach INTEGER not null,tienThue integer not null)
+ //        p0.execSQL("CREATE TABLE PhieuMuon(maPM INTEGER PRIMARY KEY AUTOINCREMENT,maTT text not null REFERENCES ThuThu(maTT),maTV INTEGER not null REFERENCES ThanhVien(maTV),tenTV text not null,
+ //        maSach INTEGER not null REFERENCES Sach(maSach),tenSach text not null,Ngay date not null,traSach INTEGER not null,tienThue integer not null)\n")
     fun insert(phieuMuon: PhieuMuon){
         db = sqliteHelper.writableDatabase
         val values = ContentValues()
         values.put("maTT",phieuMuon.maTT)
         values.put("maTV",phieuMuon.maTV)
+        values.put("tenTV",phieuMuon.tenTV)
         values.put("maSach",phieuMuon.maSach)
+        values.put("tenSach",phieuMuon.tenSach)
         values.put("Ngay",sdf.format(phieuMuon.ngay))
         values.put("traSach",phieuMuon.traSach)
         values.put("tienThue",phieuMuon.tienThue)
@@ -60,9 +61,6 @@ class PhieuMuonDAO(context: Context) {
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
         db.close()
     }
-    fun removebySach(sach: Sach) = db.delete("PhieuMuon","maSach = '${sach.maSach}' ",null)
-    fun removebyTV(thanhVien: ThanhVien) = db.delete("PhieuMuon","maTV = '${thanhVien.maTV}' ",null)
-    fun removebyTT(thuThu: ThuThu) = db.delete("PhieuMuon","maTT = '${thuThu.maTT}' ",null)
 
     fun getAll() = getData<PhieuMuon>("SELECT *FROM PhieuMuon",context)
     fun getID(id:String) = getData<PhieuMuon>("SELECT *FROM PhieuMuon WHERE maPM = '$id' ",context)[0]

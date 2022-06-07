@@ -18,7 +18,7 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, name, null, ver
         p0.execSQL("CREATE TABLE ThuThu(maTT text PRIMARY key not null,hoTen text not null,matKhau text not null)\n")
         p0.execSQL("create table LoaiSach(maLoai INTEGER PRIMARY key AUTOINCREMENT, tenLoai text not null)\n")
         p0.execSQL("create table Sach(maSach INTEGER PRIMARY KEY AUTOINCREMENT,tenSach text not null,giaThue INTEGER not null,maloai INTEGER REFERENCES LoaiSach(maloai))\n")
-        p0.execSQL("CREATE TABLE PhieuMuon(maPM INTEGER PRIMARY KEY AUTOINCREMENT,maTT text not null REFERENCES ThuThu(maTT),maTV INTEGER not null REFERENCES ThanhVien(maTV),maSach INTEGER not null REFERENCES Sach(maSach),Ngay date not null,traSach INTEGER not null,tienThue integer not null)\n")
+        p0.execSQL("CREATE TABLE PhieuMuon(maPM INTEGER PRIMARY KEY AUTOINCREMENT,maTT text not null REFERENCES ThuThu(maTT),maTV INTEGER not null REFERENCES ThanhVien(maTV),tenTV text not null,maSach INTEGER not null REFERENCES Sach(maSach),tenSach text not null,Ngay date not null,traSach INTEGER not null,tienThue integer not null)\n")
         p0.execSQL(defaultData)
     }
 

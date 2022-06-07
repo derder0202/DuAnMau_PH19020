@@ -103,7 +103,7 @@ class TempFunc {
                 when(T::class.java){
                     ThanhVien::class.java -> list.add(ThanhVien(cursor.getInt(0),cursor.getString(1),cursor.getString(2)) as T)
                     LoaiSach::class.java -> list.add(LoaiSach(cursor.getInt(0),cursor.getString(1)) as T)
-                    PhieuMuon::class.java -> list.add(PhieuMuon(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3),sdf.parse(cursor.getString(4)) as Date,cursor.getInt(5),cursor.getInt(6)) as T)
+                    PhieuMuon::class.java -> list.add(PhieuMuon(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getInt(4),cursor.getString(5),sdf.parse(cursor.getString(6)) as Date,cursor.getInt(7),cursor.getInt(8)) as T)
                     Sach::class.java -> list.add(Sach(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3)) as T)
                     ThuThu::class.java -> list.add(ThuThu(cursor.getString(0),cursor.getString(1),cursor.getString(2)) as T)
                     TopTen::class.java -> list.add(TopTen(cursor.getString(0),cursor.getInt(1)) as T)

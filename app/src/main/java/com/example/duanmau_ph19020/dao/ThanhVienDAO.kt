@@ -38,7 +38,6 @@ class ThanhVienDAO (context: Context){
     fun remove(thanhVien: ThanhVien){
         db = sqliteHelper.writableDatabase
         val result = if(db.delete("ThanhVien","maTV= ${thanhVien.maTV} ",null)<=0) "xoa thanh vien that bai" else "xoa thanh vien thanh cong"
-        PhieuMuonDAO(context).removebyTV(thanhVien)
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
         db.close()
     }

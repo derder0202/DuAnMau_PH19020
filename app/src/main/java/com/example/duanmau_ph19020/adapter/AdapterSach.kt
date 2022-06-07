@@ -32,7 +32,12 @@ class AdapterSach (private var context: Context,private var list:ArrayList<Sach>
         holder.maSach.text = "Mã sách: ${sach.maSach}"
         holder.tenSach.text = "Tên sách: ${sach.tenSach}"
         holder.giaThue.text = "Giá thuê: ${sach.giaThue}"
-        holder.loaiSach.text = "Loại sách: ${LoaiSachDAO(context).getID(sach.maLoai.toString()).tenLoai}"
+        try {
+            holder.loaiSach.text = "Loại sách: ${LoaiSachDAO(context).getID(sach.maLoai.toString()).tenLoai}"
+        } catch (e:Exception){
+            e.printStackTrace()
+            holder.loaiSach.text = "Loại sách đã xóa. Vui lòng cập nhật loại sách cho sách."
+        }
         holder.editBtn.setOnClickListener{
             fragment.openDialog(sach,1)
         }
