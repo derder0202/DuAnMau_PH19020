@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.duanmau_ph19020.dao.SachDAO
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.removeDialog
 import com.example.duanmau_ph19020.databinding.ItemLoaisachBinding
 import com.example.duanmau_ph19020.fragments.QLLSFragment
@@ -29,7 +31,9 @@ class AdapterLoaiSach(private val context: Context, private val list: ArrayList<
         holder.maLoai.text = "Mã loại: ${loaiSach.maLoai} "
         holder.tenloai.text = loaiSach.tenLoai
         holder.removeBtn.setOnClickListener{
-            removeDialog(loaiSach,context,fragment)
+            if(SachDAO(context).getAll().size!=0){
+                Toast.makeText(context,"Không thể xóa loại sách khi có sách trong loại sách này",Toast.LENGTH_SHORT).show()
+            } else removeDialog(loaiSach,context,fragment)
         }
         holder.editBtn.setOnClickListener{
             fragment.openDialog(loaiSach,1)

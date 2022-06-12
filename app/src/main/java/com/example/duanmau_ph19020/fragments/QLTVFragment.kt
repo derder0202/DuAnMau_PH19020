@@ -1,13 +1,19 @@
 package com.example.duanmau_ph19020.fragments
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.duanmau_ph19020.adapter.AdapterThanhVien
 import com.example.duanmau_ph19020.dao.*
@@ -15,12 +21,19 @@ import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkField
 import com.example.duanmau_ph19020.databinding.DialogThanhvienBinding
 import com.example.duanmau_ph19020.databinding.FragmentQltvBinding
 import com.example.duanmau_ph19020.model.*
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.normal.TedPermission
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
+import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class QLTVFragment : Fragment() {
+    lateinit var imgView:ImageView
+    private  var uri: Uri? = null
     private lateinit var thanhVienDAO:ThanhVienDAO
     private var _binding: FragmentQltvBinding? = null
     private val binding get() = _binding!!
@@ -77,11 +90,17 @@ class QLTVFragment : Fragment() {
         val maTV = binding.dialogTvMaTV
         val hoTen = binding.dialogTvHoTen
         val ngaySinh = binding.dialogTvNgaySinh
+        imgView = binding.dialogQltvImg
+
+        imgView.setOnClickListener {
+            getURIImageFromGarelly()
+        }
         hoTen.editText!!.requestFocus()
         if(type!=0){
             hoTen.editText!!.setText(thanhVien.hoTen)
             ngaySinh.editText!!.setText(thanhVien.namSinh)
             maTV.editText!!.setText(thanhVien.maTV.toString())
+            imgView.setImageURI(Uri.parse(thanhVien.img))
         }
         val cal = Calendar.getInstance()
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, i, i2, i3 ->
@@ -104,6 +123,7 @@ class QLTVFragment : Fragment() {
             if(checkField(hoTen,ngaySinh)){
                 thanhVien.hoTen = hoTen.editText!!.text.toString()
                 thanhVien.namSinh = ngaySinh.editText!!.text.toString()
+                thanhVien.img = uri.toString()
                 if(type==0){
                     thanhVienDAO.insert(thanhVien)
                 }
@@ -116,6 +136,39 @@ class QLTVFragment : Fragment() {
         }
         binding.dialogTvResetBtn.setOnClickListener {
             alertDialog.dismiss()
+        }
+
+    }
+
+
+
+    fun getURIImageFromGarelly(){
+        val permissionlistener: PermissionListener = object : PermissionListener {
+            override fun onPermissionGranted() {
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1,1).start(requireContext(),this@QLTVFragment)
+            }
+
+            override fun onPermissionDenied(deniedPermissions: List<String>) {
+                Log.d("requestPermisstion","denied")
+            }
+        }
+        TedPermission.create()
+            .setPermissionListener(permissionlistener)
+            .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+            .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+            .check()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+           try {
+               val result = CropImage.getActivityResult(data)
+               imgView.setImageURI(result.uri)
+               uri = result.uri
+           } catch (e:Exception){
+               e.printStackTrace()
+           }
         }
     }
 

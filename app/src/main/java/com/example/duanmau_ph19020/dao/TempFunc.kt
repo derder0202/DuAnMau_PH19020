@@ -1,15 +1,24 @@
 package com.example.duanmau_ph19020.dao
+
+import android.Manifest
 import android.annotation.SuppressLint
-import android.app.AlertDialog
+import android.app.Activity
 import android.content.Context
+import android.net.Uri
+import android.util.Log
 import android.widget.EditText
 import com.example.duanmau_ph19020.database.SQLiteHelper
 import com.example.duanmau_ph19020.fragments.*
 import com.example.duanmau_ph19020.model.*
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.normal.TedPermission
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
+import dev.shreyaspatil.MaterialDialog.MaterialDialog
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 @SuppressLint("SimpleDateFormat")
 class TempFunc {
@@ -51,15 +60,18 @@ class TempFunc {
             return listString
         }
         fun removeDialog(objectAny: Any,context: Context, fragmentAny:Any){
-            val builder = AlertDialog.Builder(context)
-                .setTitle(when(objectAny){
-                    is ThanhVien -> "Xóa thành viên"
-                    is LoaiSach -> "Xóa loại sách"
-                    is PhieuMuon -> "Xóa phiếu mượn"
-                    is Sach -> "Xóa sách"
-                    is ThuThu -> "Xóa thủ thư"
-                    else -> {null}
-                })
+
+            val builder = MaterialDialog.Builder(context as Activity)
+                .setTitle(
+                    when(objectAny){
+                        is ThanhVien -> "Xóa thành viên"
+                        is LoaiSach -> "Xóa loại sách"
+                        is PhieuMuon -> "Xóa phiếu mượn"
+                        is Sach -> "Xóa sách"
+                        is ThuThu -> "Xóa thủ thư"
+                        else -> {null}
+                    }.toString()
+                )
                 .setMessage("Bạn có muốn xóa không")
                 .setCancelable(true)
                 .setPositiveButton("YES") { dialogInterface, _ ->
@@ -90,7 +102,7 @@ class TempFunc {
                 .setNegativeButton("NO") { dialogInterface, _ ->
                     dialogInterface.dismiss()
                 }
-            val dialog = builder.create()
+            val dialog = builder.build()
             dialog.show()
         }
         inline fun <reified T> getData(sql:String, context: Context):ArrayList<T>{
@@ -101,9 +113,9 @@ class TempFunc {
             cursor.moveToFirst()
             while (!cursor.isAfterLast){
                 when(T::class.java){
-                    ThanhVien::class.java -> list.add(ThanhVien(cursor.getInt(0),cursor.getString(1),cursor.getString(2)) as T)
+                    ThanhVien::class.java -> list.add(ThanhVien(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3)) as T)
                     LoaiSach::class.java -> list.add(LoaiSach(cursor.getInt(0),cursor.getString(1)) as T)
-                    PhieuMuon::class.java -> list.add(PhieuMuon(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getInt(4),cursor.getString(5),sdf.parse(cursor.getString(6)) as Date,cursor.getInt(7),cursor.getInt(8)) as T)
+                    PhieuMuon::class.java -> list.add(PhieuMuon(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3),sdf.parse(cursor.getString(4)) as Date,cursor.getInt(5),cursor.getInt(6)) as T)
                     Sach::class.java -> list.add(Sach(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3)) as T)
                     ThuThu::class.java -> list.add(ThuThu(cursor.getString(0),cursor.getString(1),cursor.getString(2)) as T)
                     TopTen::class.java -> list.add(TopTen(cursor.getString(0),cursor.getInt(1)) as T)
@@ -115,6 +127,7 @@ class TempFunc {
             sqLiteDatabase.close()
             return list
         }
+
     }
 }
 

@@ -1,9 +1,14 @@
 package com.example.duanmau_ph19020.adapter
 import android.annotation.SuppressLint
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.example.duanmau_ph19020.R
+import com.example.duanmau_ph19020.dao.PhieuMuonDAO
 import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.dao.TempFunc.Companion.removeDialog
 import com.example.duanmau_ph19020.databinding.ItemThanhvienBinding
@@ -27,7 +32,15 @@ class AdapterThanhVien(private val context: Context, private var fragment:QLTVFr
             fragment.openDialog(thanhVien,1)
         }
         holder.removeBtn.setOnClickListener{
-            removeDialog(thanhVien,context,fragment)
+            if(PhieuMuonDAO(context).getAll().size!=0){
+                Toast.makeText(context,"Không thể xóa thành viên. Hiện đang có phiếu mượn mà thành viên mượn",Toast.LENGTH_SHORT).show()
+            } else removeDialog(thanhVien,context,fragment)
+        }
+
+        if (thanhVien.img=="null"){
+            holder.img.load(R.drawable.unknown)
+        } else{
+            holder.img.load(Uri.parse(thanhVien.img))
         }
     }
 
@@ -38,5 +51,6 @@ class AdapterThanhVien(private val context: Context, private var fragment:QLTVFr
         val namSinh = binding.itemTvYear
         val editBtn = binding.itemTvEditBtn
         val removeBtn = binding.itemTvRemoveBtn
+        val img = binding.itemTvImg
     }
 }

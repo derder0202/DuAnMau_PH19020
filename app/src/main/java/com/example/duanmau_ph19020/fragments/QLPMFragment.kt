@@ -130,9 +130,7 @@ class QLPMFragment : Fragment() {
             } else{
                 phieuMuon.maTT = requireActivity().intent.getStringExtra("user").toString()
                 phieuMuon.maSach = spinnerTenSach.selectedItem.toString().split("\t\t\t")[0].toInt()
-                phieuMuon.tenSach = spinnerTenSach.selectedItem.toString().split("\t\t\t")[1]
                 phieuMuon.maTV = spinnerTenTV.selectedItem.toString().split("\t\t\t")[0].toInt()
-                phieuMuon.tenTV = spinnerTenTV.selectedItem.toString().split("\t\t\t")[1]
                 phieuMuon.ngay = Calendar.getInstance().time
                 phieuMuon.tienThue = tempGia
                 phieuMuon.traSach = if(traSachChk.isChecked) 1 else 0

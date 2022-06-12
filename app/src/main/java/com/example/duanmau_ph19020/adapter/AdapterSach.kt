@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.dao.LoaiSachDAO
+import com.example.duanmau_ph19020.dao.PhieuMuonDAO
 import com.example.duanmau_ph19020.dao.TempFunc
 import com.example.duanmau_ph19020.databinding.ItemSachBinding
 import com.example.duanmau_ph19020.fragments.QLSFragment
@@ -42,7 +44,10 @@ class AdapterSach (private var context: Context,private var list:ArrayList<Sach>
             fragment.openDialog(sach,1)
         }
         holder.removeBtn.setOnClickListener{
-            TempFunc.removeDialog(sach,context,fragment)
+            if(PhieuMuonDAO(context).getAll().size!=0){
+                Toast.makeText(context,"Không thể xóa sách. Hiện đang có phiếu mượn chứa sách này",
+                    Toast.LENGTH_SHORT).show()
+            } else TempFunc.removeDialog(sach,context,fragment)
         }
     }
 

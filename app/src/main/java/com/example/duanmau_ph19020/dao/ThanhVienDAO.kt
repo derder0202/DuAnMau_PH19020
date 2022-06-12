@@ -22,6 +22,7 @@ class ThanhVienDAO (context: Context){
         val values = ContentValues()
         values.put("hoTen",thanhVien.hoTen)
         values.put("namSinh",thanhVien.namSinh)
+        values.put("img",thanhVien.img)
         val result = if(db.insert("ThanhVien",null,values)<0) "them thanh vien that bai" else "them thanh vien thanh cong"
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
         db.close()
@@ -31,6 +32,7 @@ class ThanhVienDAO (context: Context){
         val values = ContentValues()
         values.put("hoTen",thanhVien.hoTen)
         values.put("namSinh",thanhVien.namSinh)
+        values.put("img",thanhVien.img)
         val result = if(db.update("ThanhVien",values,"maTV= ${thanhVien.maTV} ",null)<=0) "cap nhat thanh vien that bai" else "cap nhat thanh vien thanh cong"
         Toast.makeText(context,result,Toast.LENGTH_SHORT).show()
         db.close()
