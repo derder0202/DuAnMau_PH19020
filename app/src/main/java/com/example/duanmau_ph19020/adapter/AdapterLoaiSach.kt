@@ -52,13 +52,7 @@ class AdapterLoaiSach(private val context: Context, private var list: ArrayList<
                 if(strSearch.isEmpty()){
                     list = oldList
                 } else{
-                    val tempList = ArrayList<LoaiSach>()
-                    for (loaisach in oldList){
-                        if(loaisach.tenLoai.lowercase().contains(strSearch.lowercase())){
-                            tempList.add(loaisach)
-                        }
-                    }
-                    list = tempList
+                    list = oldList.filter { loaiSach -> loaiSach.tenLoai.lowercase().contains(strSearch.lowercase()) } as ArrayList<LoaiSach>
                 }
                 val filterResult = FilterResults()
                 filterResult.values = list

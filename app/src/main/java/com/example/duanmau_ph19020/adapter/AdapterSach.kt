@@ -62,13 +62,7 @@ class AdapterSach (private var context: Context,private var list:ArrayList<Sach>
                 if(strSearch.isEmpty()){
                     list = oldList
                 } else{
-                    val tempList = ArrayList<Sach>()
-                    oldList.forEach{
-                        if (it.tenSach.lowercase().contains(strSearch.lowercase())){
-                            tempList.add(it)
-                        }
-                    }
-                    list = tempList
+                    list = oldList.filter { sach -> sach.tenSach.lowercase().contains(strSearch.lowercase()) } as ArrayList<Sach>
                 }
                 val filterResults = FilterResults()
                 filterResults.values = list

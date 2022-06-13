@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.duanmau_ph19020.R
 import com.example.duanmau_ph19020.adapter.AdapterThanhVien
@@ -41,6 +42,7 @@ class QLTVFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentQltvBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        setHasOptionsMenu(true)
         binding.QLTVFragmentLayout.background.alpha = 130
         thanhVienDAO = ThanhVienDAO(requireContext())
 
@@ -60,23 +62,6 @@ class QLTVFragment : Fragment() {
         binding.qltvRecylerView.layoutManager = linearLayoutManager
         binding.qltvRecylerView.adapter = adapterThanhvien
     }
-
-//    fun removeDialog(thanhVien: ThanhVien,dao:ThanhVienDAO){
-//        val builder = AlertDialog.Builder(requireActivity())
-//            .setTitle("Xoa Thanh Vien")
-//            .setMessage("Ban co muon xoa khong")
-//            .setCancelable(true)
-//            .setPositiveButton("YES") { dialogInterface, i ->
-//                thanhVienDAO.remove(thanhVien)
-//                updateRecylerView()
-//                dialogInterface.dismiss()
-//            }
-//            .setNegativeButton("NO") { dialogInterface, i ->
-//                dialogInterface.dismiss()
-//            }
-//        val dialog = builder.create()
-//        dialog.show()
-//    }
 
     @SuppressLint("SimpleDateFormat")
     fun openDialog(thanhVien: ThanhVien, type:Int){
@@ -172,8 +157,21 @@ class QLTVFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.main,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+        val searchView = menu.findItem(R.id.action_search).actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                adapterThanhvien.filter.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapterThanhvien.filter.filter(newText)
+                return false
+            }
+
+        })
 
     }
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import coil.load
 import com.example.duanmau_ph19020.databinding.ActivityManHinhChaoBinding
 
 class ManHinhChaoActivity : AppCompatActivity() {
@@ -17,5 +18,6 @@ class ManHinhChaoActivity : AppCompatActivity() {
             startActivity(Intent(this,LoginActivity::class.java))
             finish()
         },2000)
+
     }
 }
