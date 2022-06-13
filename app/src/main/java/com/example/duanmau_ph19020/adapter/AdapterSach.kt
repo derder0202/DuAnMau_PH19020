@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.dao.LoaiSachDAO
@@ -13,7 +15,7 @@ import com.example.duanmau_ph19020.databinding.ItemSachBinding
 import com.example.duanmau_ph19020.fragments.QLSFragment
 import com.example.duanmau_ph19020.model.Sach
 
-class AdapterSach (private var context: Context,private var list:ArrayList<Sach>,private var fragment:QLSFragment) : RecyclerView.Adapter<AdapterSach.ViewHolder>() {
+class AdapterSach (private var context: Context,private var list:ArrayList<Sach>,private var fragment:QLSFragment) : RecyclerView.Adapter<AdapterSach.ViewHolder>(),Filterable {
     class ViewHolder(binding: ItemSachBinding) : RecyclerView.ViewHolder(binding.root) {
         val maSach = binding.itemQlsMaSach
         val tenSach = binding.itemQlsTenSach
@@ -52,4 +54,32 @@ class AdapterSach (private var context: Context,private var list:ArrayList<Sach>
     }
 
     override fun getItemCount(): Int = list.size
+    var oldList = list
+    override fun getFilter(): Filter {
+        return object : Filter(){
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                val strSearch = p0.toString()
+                if(strSearch.isEmpty()){
+                    list = oldList
+                } else{
+                    val tempList = ArrayList<Sach>()
+                    oldList.forEach{
+                        if (it.tenSach.lowercase().contains(strSearch.lowercase())){
+                            tempList.add(it)
+                        }
+                    }
+                    list = tempList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = list
+                return filterResults
+            }
+
+            override fun publishResults(p0: CharSequence?, p1: FilterResults) {
+                list = p1.values as ArrayList<Sach>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
 }

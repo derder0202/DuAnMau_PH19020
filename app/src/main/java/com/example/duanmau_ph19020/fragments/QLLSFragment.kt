@@ -2,12 +2,12 @@ package com.example.duanmau_ph19020.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.duanmau_ph19020.R
 import com.example.duanmau_ph19020.adapter.AdapterLoaiSach
 import com.example.duanmau_ph19020.dao.LoaiSachDAO
 import com.example.duanmau_ph19020.dao.TempFunc
@@ -15,6 +15,8 @@ import com.example.duanmau_ph19020.dao.TempFunc.Companion.checkField
 import com.example.duanmau_ph19020.databinding.DialogQllsBinding
 import com.example.duanmau_ph19020.databinding.FragmentQllsBinding
 import com.example.duanmau_ph19020.model.LoaiSach
+import java.util.*
+import kotlin.collections.ArrayList
 
 class QLLSFragment : Fragment() {
 
@@ -32,6 +34,7 @@ class QLLSFragment : Fragment() {
     ): View {
         _binding = FragmentQllsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        setHasOptionsMenu(true)
         binding.QLLSFragmentLayout.background.alpha = 130
         recyclerView = binding.qllsRecylerView
         dao = LoaiSachDAO(requireContext())
@@ -87,6 +90,25 @@ class QLLSFragment : Fragment() {
         }
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+        val searchView = menu.findItem(R.id.action_search).actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                adapterLoaisach.filter.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapterLoaisach.filter.filter(newText)
+                return false
+            }
+        })
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

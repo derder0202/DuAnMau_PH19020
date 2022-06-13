@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.duanmau_ph19020.dao.SachDAO
@@ -12,13 +14,15 @@ import com.example.duanmau_ph19020.databinding.ItemLoaisachBinding
 import com.example.duanmau_ph19020.fragments.QLLSFragment
 import com.example.duanmau_ph19020.model.LoaiSach
 
-class AdapterLoaiSach(private val context: Context, private val list: ArrayList<LoaiSach>, private val fragment:QLLSFragment) : RecyclerView.Adapter<AdapterLoaiSach.ViewHolder>() {
+class AdapterLoaiSach(private val context: Context, private var list: ArrayList<LoaiSach>, private val fragment:QLLSFragment) : RecyclerView.Adapter<AdapterLoaiSach.ViewHolder>(),Filterable {
+    val oldList = list
     class ViewHolder(binding: ItemLoaisachBinding) : RecyclerView.ViewHolder(binding.root) {
         val maLoai = binding.itemQllsMaLoai
         val tenloai = binding.itemQllsTenLoai
         val removeBtn = binding.itemQllsRemoveBtn
         val editBtn = binding.itemQllsEditBtn
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemLoaisachBinding.inflate(LayoutInflater.from(context),parent,false)
@@ -41,4 +45,30 @@ class AdapterLoaiSach(private val context: Context, private val list: ArrayList<
     }
 
     override fun getItemCount(): Int = list.size
+    override fun getFilter(): Filter {
+        return object : Filter(){
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                val strSearch = p0.toString()
+                if(strSearch.isEmpty()){
+                    list = oldList
+                } else{
+                    val tempList = ArrayList<LoaiSach>()
+                    for (loaisach in oldList){
+                        if(loaisach.tenLoai.lowercase().contains(strSearch.lowercase())){
+                            tempList.add(loaisach)
+                        }
+                    }
+                    list = tempList
+                }
+                val filterResult = FilterResults()
+                filterResult.values = list
+                return filterResult
+            }
+            override fun publishResults(p0: CharSequence?, p1: FilterResults) {
+                list = p1.values as ArrayList<LoaiSach>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
 }

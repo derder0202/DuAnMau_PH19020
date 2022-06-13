@@ -2,14 +2,14 @@ package com.example.duanmau_ph19020.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.duanmau_ph19020.R
 import com.example.duanmau_ph19020.adapter.AdapterSach
 import com.example.duanmau_ph19020.dao.LoaiSachDAO
 import com.example.duanmau_ph19020.dao.SachDAO
@@ -30,6 +30,7 @@ class QLSFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentQlsBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         val root: View = binding.root
         binding.QLSFragmentLayout.background.alpha = 130
         recyclerView = binding.qlsRecylerView
@@ -99,6 +100,25 @@ class QLSFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapterSach
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+        val searchView = menu.findItem(R.id.action_search).actionView as androidx.appcompat.widget.SearchView
+        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener
+             {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                adapterSach.filter.filter(p0)
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                adapterSach.filter.filter(p0)
+                return false
+            }
+
+        })
     }
 
     override fun onDestroyView() {

@@ -53,4 +53,5 @@
     <string name="rePass">Nhập lại mật khẩu mới</string>
     <string name="tungay">Từ ngày</string>
     <string name="denngay">Đến ngày</string>
+    <string name="action_search">Search</string>
 </resources>
