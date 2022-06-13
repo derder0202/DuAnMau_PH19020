@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import com.example.duanmau_ph19020.dao.PhieuMuonDAO
 import com.example.duanmau_ph19020.databinding.FragmentDoanhThuBinding
 import java.text.SimpleDateFormat
@@ -30,9 +31,17 @@ class DoanhThuFragment : Fragment() {
         datePickerDialogEdittext(denNgay)
 
         binding.dtTinhBtn.setOnClickListener {
-            binding.dtResult.text = "Doanh thu: ${PhieuMuonDAO(requireContext()).getDoanhThu(sdfSQL.format(
-                sdf.parse(tuNgay.text.toString())!!
-            ),denNgay.text.toString())}"
+            if(tuNgay.text!!.isEmpty()||denNgay.text!!.isEmpty()){
+                Toast.makeText(requireContext(),"Phải nhập cả ngày bắt đầu và ngày kết thúc",Toast.LENGTH_SHORT).show()
+            } else{
+                if(sdf.parse(tuNgay.text.toString()).compareTo(sdf.parse(denNgay.text.toString()))!=-1){
+                    Toast.makeText(requireContext(),"Lỗi.. Ngày bắt đầu phải bé hơn ngày kết thúc",Toast.LENGTH_SHORT).show()
+                } else{
+                    binding.dtResult.text = "Doanh thu: ${PhieuMuonDAO(requireContext()).getDoanhThu(sdfSQL.format(
+                        sdf.parse(tuNgay.text.toString())!!
+                    ),denNgay.text.toString())} VND"
+                }
+            }
         }
         return root
     }
