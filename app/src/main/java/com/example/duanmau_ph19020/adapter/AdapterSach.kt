@@ -46,7 +46,7 @@ class AdapterSach (private var context: Context,private var list:ArrayList<Sach>
             fragment.openDialog(sach,1)
         }
         holder.removeBtn.setOnClickListener{
-            if(PhieuMuonDAO(context).getAll().size!=0){
+            if(PhieuMuonDAO(context).getAll().indexOfFirst { phieuMuon -> phieuMuon.maSach == sach.maSach } != -1){
                 Toast.makeText(context,"Không thể xóa sách. Hiện đang có phiếu mượn chứa sách này",
                     Toast.LENGTH_SHORT).show()
             } else TempFunc.removeDialog(sach,context,fragment)

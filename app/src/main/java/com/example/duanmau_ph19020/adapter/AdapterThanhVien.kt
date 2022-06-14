@@ -34,7 +34,7 @@ class AdapterThanhVien(private val context: Context, private var fragment:QLTVFr
             fragment.openDialog(thanhVien,1)
         }
         holder.removeBtn.setOnClickListener{
-            if(PhieuMuonDAO(context).getAll().size!=0){
+            if(PhieuMuonDAO(context).getAll().indexOfFirst { phieuMuon -> phieuMuon.maTV == thanhVien.maTV } != -1){
                 Toast.makeText(context,"Không thể xóa thành viên. Hiện đang có phiếu mượn mà thành viên mượn",Toast.LENGTH_SHORT).show()
             } else removeDialog(thanhVien,context,fragment)
         }

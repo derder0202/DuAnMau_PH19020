@@ -34,8 +34,11 @@ class AdapterLoaiSach(private val context: Context, private var list: ArrayList<
         val loaiSach = list[position]
         holder.maLoai.text = "Mã loại: ${loaiSach.maLoai} "
         holder.tenloai.text = loaiSach.tenLoai
+        val x = SachDAO(context).getAll().indexOfFirst { sach -> sach.maLoai == loaiSach.maLoai  }==-1
+        print(x)
         holder.removeBtn.setOnClickListener{
-            if(SachDAO(context).getAll().size!=0){
+
+            if(SachDAO(context).getAll().indexOfFirst { sach -> sach.maLoai == loaiSach.maLoai  }!=-1){
                 Toast.makeText(context,"Không thể xóa loại sách khi có sách trong loại sách này",Toast.LENGTH_SHORT).show()
             } else removeDialog(loaiSach,context,fragment)
         }
